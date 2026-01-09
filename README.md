@@ -34,3 +34,9 @@ dotnet add MyProject.Tests/MyProject.Tests.csproj reference MyProject/MyProject.
 
 tests go in the test directory, code in the project directory. <br>
 
+list tests with: <br>
+dotnet test MySolution/  -t <br>
+
+run tests with:
+
+dotnet MySolution/ <br>
