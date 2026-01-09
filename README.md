@@ -1,26 +1,36 @@
 
-TDD scripting
-https://blog.coscreen.co/blog/tdd-in-c-guide/
+TDD scripting <br>
+https://blog.coscreen.co/blog/tdd-in-c-guide/ <br>
+<br>
 
-testing:
-https://sentry.io/signup/?original_referrer=https%3A%2F%2Fblog.sentry.io%2F
+testing: <br>
+https://sentry.io/signup/?original_referrer=https%3A%2F%2Fblog.sentry.io%2F <br>
+<br>
 
-dotnet setup:
-install pulsar ide
-install dotnet - sudo apt instal dotnet-sdk-<version>
+dotnet setup: <br>
+install pulsar ide <br>
+install dotnet - sudo apt instal dotnet-sdk-<version> <br>
+<br>
 
-then setting up a test environment:
-Solution for to organise tests and codes 
-dotnet new sln -o MySolution
+then setting up a test environment: <br>
+Solution for to organise tests and codes <br> 
+dotnet new sln -o MySolution <br>
+<br>
 
-create application:
-dotnet new classlib -o MyProject
+create application: <br>
+dotnet new classlib -o MyProject <br>
+<br>
 
-create a test frmework (Nunit, xunit etc)
-dotnet new nunit -o MyProject.Tests
+add a test frmework (Nunit, xunit etc) <br>
+dotnet new nunit -o MyProject.Tests <br>
+<br>
 
-link it all together:
+link it all together: <br>
+<br>
 
-dotnet sln MySolution add MyProject/MyProject.csproj
-dotnet sln MySolution add MyProject.Tests/MyProject.Tests.csproj
-dotnet add MyProject.Tests/MyProject.Tests.csproj reference MyProject/MyProject.csproj 
+dotnet sln MySolution add MyProject/MyProject.csproj <br>
+dotnet sln MySolution add MyProject.Tests/MyProject.Tests.csproj <br>
+dotnet add MyProject.Tests/MyProject.Tests.csproj reference MyProject/MyProject.csproj  <br>
+
+tests go in the test directory, code in the project directory. <br>
+
