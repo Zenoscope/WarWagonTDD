@@ -8,11 +8,11 @@ namespace Entity
 {
     public class Entity
     {
-      private int Health { get; private set; }
-      private int MaxHealth { get; private set; }
+      private int _health { get; private set; }
+      private int _maxHealth { get; private set; }
 
-      public int x_loc { get; private set; }
-      public int y_loc { get; private set; }
+      public int _x_loc { get; private set; }
+      public int _y_loc { get; private set; }
 
       // spawn
 
