@@ -21,84 +21,84 @@ namespace EntityTests
       // Spawn location
       [Test]
       public void setXSpawnLoc(){
-        Assert.That(myEntity.set_x_spawn(),Is.EqualTo(0));
+        Assert.That(myEntity.setXSpawn(),Is.EqualTo(0));
       }
 
       [Test]
-      public void setYSpawnLoc(){
-        Assert.That(myEntity.set_y_spawn(),Is.EqualTo(0));
+      public void setZSpawnLoc(){
+        Assert.That(myEntity.setZSpawn(),Is.EqualTo(0));
       }
-
-      [Test]
-      // get
+    
+      [Test]      
+      //  not moved yet, just checking where we are.
       public void getEntityXLocation() {
-        Assert.That(myEntity.get_x_loc(),Is.EqualTo(0));          
+        Assert.That(myEntity.getXLoc(),Is.EqualTo(0));          
+      }
+
+      [Test]      
+      public void getEntityZLocation() {
+        Assert.That(myEntity.getZLoc(),Is.EqualTo(0));
       }
 
       [Test]
-      public void getEntityYLocation() {
-        Assert.That(myEntity.get_y_loc(),Is.EqualTo(0));
-      }
-
-      [Test]
-      // set
       public void setEntityXLocation() {
-        
+        // move in positive direction
+        Assert.That(myEntity.setXLoc(moveAmount),Is.EqualTo(moveAmount));
+        Assert.That(myEntity.getXLoc(),Is.EqualTo(moveAmount));
+        // move vack to zero
+        Assert.That(myEntity.setXLoc(-moveAmount),Is.EqualTo(0));
+        Assert.That(myEntity.getXLoc(),Is.EqualTo(0));        
       }
 
       [Test]
-      public void setEntityYLocation() {
-        Assert.That(myEntity.set_y_loc(moveAmount),Is.EqualTo(moveAmount));
-      }
-
-      [Test]
-      public void getEntityXLocationAgain() {
-        Assert.That(myEntity.get_x_loc(),Is.EqualTo(10));
-      }
-
-      [Test]
-      public void getEntityYLocationAgain() {
-        Assert.That(myEntity.get_y_loc(),Is.EqualTo(10));
+      public void setEntityZLocation() {
+        // move in positive direction
+        Assert.That(myEntity.setZLoc(moveAmount),Is.EqualTo(moveAmount));
+        Assert.That(myEntity.getZLoc(),Is.EqualTo(moveAmount));
+        // move vack to zero
+        Assert.That(myEntity.setZLoc(-moveAmount),Is.EqualTo(0));
+        Assert.That(myEntity.getZLoc(),Is.EqualTo(0));        
       }
       
-      [Test]
-      public void setNewEntityXLocation() {
-        Assert.That(myEntity.set_x_loc(-20),Is.EqualTo(-10));
-      }
+      
+      // Health tests
+      int maxHealth = 105;
 
-      [Test]
-      public void getNewEntityYLocation() {
-        Assert.That(myEntity.get_y_loc(),Is.EqualTo(10));
+      [Test]      
+      public void spawnSetEntityHealth() {
+        // set max health and current health.
+        Assert.That(myEntity.spawnSetHealth(maxHealth),Is.EqualTo(maxHealth));
       }
-
-      // Health
-      [Test]
-      public void setEntityMaxHealth() {
-        int maxHealth = 100;
-        Assert.That(myEntity.setMaxHealth(MaxHealth),Is.EqualTo(100));
-      }
-
-      [Test]
+      
+      [Test]      
       public void getEntityHealth() {
-        Assert.That(myEntity.getHealth(),Is.EqualTo(100));
+        Console.WriteLine("Getting health");              
+        Assert.That(myEntity.getHealth(),Is.EqualTo(maxHealth));
       }
-      
+
+      /*      
+      [Test]
+      [Ignore("not written")]
       public void injureEntity() {
         int injuryAmount = 25;
         Assert.That(myEntity.subtractFromHealth(injuryAmount),Is.EqualTo(75));
       }
       
+      [Test]
+      [Ignore("not written")]
       public void healEntity() {
         int healAmount = 25;
         Assert.That(myEntity.addToHealth(healAmount),Is.EqualTo(100));
       }
       
+      [Test]
+      [Ignore("not written")]
       public void killEntity() {
         int injuryAmount = 25;
-        Assert.That(myEntity.subtractFromHealth(injuryAmount),Is.EqualTo(75))
-        Assert.That(myEntity.subtractFromHealth(injuryAmount),Is.EqualTo(50))
-        Assert.That(myEntity.subtractFromHealth(injuryAmount),Is.EqualTo(25))
-        Assert.That(myEntity.subtractFromHealth(injuryAmount),Is.EqualTo(0))
+        Assert.That(myEntity.subtractFromHealth(injuryAmount),Is.EqualTo(75));
+        Assert.That(myEntity.subtractFromHealth(injuryAmount),Is.EqualTo(50));
+        Assert.That(myEntity.subtractFromHealth(injuryAmount),Is.EqualTo(25));
+        Assert.That(myEntity.subtractFromHealth(injuryAmount),Is.EqualTo(0));
         // subtractFromHealth:
         // if _health == 0 then dieEntity()
         // if String entityType = "Enemy";
@@ -106,6 +106,8 @@ namespace EntityTests
         // also armour?
       }
 
+      [Test]
+      [Ignore("not written")]
       public void overHealEntity() {
         int healAmount = 25;
         Assert.That(myEntity.addToHealth(healAmount),Is.EqualTo(100));
@@ -115,6 +117,9 @@ namespace EntityTests
         // if _health > maxHealth then _health = maxHealth;
       }
 
+
+      [Test]
+      [Ignore("not written")]
        public void dieEntity(){
           // if type is enemy:
           // depending on the weapon used, play the death animation
@@ -125,7 +130,9 @@ namespace EntityTests
           // if the type is player, i guess the wagon gets wrecked and the weapons all fly out and
           // things all break or there is a death explosion or something and then you restart          
        }
-       
+
+      [Test]
+      [Ignore("not written")]
       // Collect a gem
       public void collectAGem(){
          String entityType = "Enemy";
@@ -139,7 +146,9 @@ namespace EntityTests
          // add the gem value to the armour/health of the enemy entity, to a max value (%?)
          // add the gem to the GemCount
       }
-      
+
+      [Test]
+      [Ignore("not written")]
       public void checkGemStage(){
          int currentGemLevel = 0;
         // check the current level, each gem level should have a level (number or percentage)
@@ -157,6 +166,6 @@ namespace EntityTests
       
        // ***level up weapons
       // grab 2 random weapons and one current weapon from the weapon list to upgrade  
-       
+      */
     }
 }
