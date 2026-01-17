@@ -21,3 +21,15 @@
 /home/rmcarthur/WarWagonTDD/MyProject/bin/Debug/net10.0/MyProject.dll
 /home/rmcarthur/WarWagonTDD/MyProject/bin/Debug/net10.0/MyProject.pdb
 /home/rmcarthur/WarWagonTDD/MyProject/obj/Debug/net10.0/ref/MyProject.dll
+/home/ryan/Documents/Projects/UnityDev/WarWagonTDD/MyProject/obj/Debug/net10.0/MyProject.GeneratedMSBuildEditorConfig.editorconfig
+/home/ryan/Documents/Projects/UnityDev/WarWagonTDD/MyProject/obj/Debug/net10.0/MyProject.AssemblyInfoInputs.cache
+/home/ryan/Documents/Projects/UnityDev/WarWagonTDD/MyProject/obj/Debug/net10.0/MyProject.AssemblyInfo.cs
+/home/ryan/Documents/Projects/UnityDev/WarWagonTDD/MyProject/obj/Debug/net10.0/MyProject.csproj.CoreCompileInputs.cache
+/home/ryan/Documents/Projects/UnityDev/WarWagonTDD/MyProject/obj/Debug/net10.0/MyProject.sourcelink.json
+/home/ryan/Documents/Projects/UnityDev/WarWagonTDD/MyProject/obj/Debug/net10.0/MyProject.dll
+/home/ryan/Documents/Projects/UnityDev/WarWagonTDD/MyProject/obj/Debug/net10.0/refint/MyProject.dll
+/home/ryan/Documents/Projects/UnityDev/WarWagonTDD/MyProject/obj/Debug/net10.0/MyProject.pdb
+/home/ryan/Documents/Projects/UnityDev/WarWagonTDD/MyProject/bin/Debug/net10.0/MyProject.deps.json
+/home/ryan/Documents/Projects/UnityDev/WarWagonTDD/MyProject/bin/Debug/net10.0/MyProject.dll
+/home/ryan/Documents/Projects/UnityDev/WarWagonTDD/MyProject/bin/Debug/net10.0/MyProject.pdb
+/home/ryan/Documents/Projects/UnityDev/WarWagonTDD/MyProject/obj/Debug/net10.0/ref/MyProject.dll
