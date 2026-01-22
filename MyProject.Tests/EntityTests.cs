@@ -128,16 +128,13 @@ namespace EntityTests
 
 
       [Test]
-      [Ignore("This works")]
       public void overHealEntity() {
         int healAmount = 25;
         Assert.That(myEntity.spawnSetHealth(maxHealth),Is.EqualTo(maxHealth));
         Assert.That(myEntity.addToHealth(healAmount),Is.EqualTo(100));
       }
 
-      /*
-      [Test]
-      [Ignore("not written")]
+      [Test]      
       // Collect a gem
       public void collectAGem(){
          String entityType = "Enemy";
@@ -152,6 +149,7 @@ namespace EntityTests
          // add the gem to the GemCount
       }
 
+      /*
       [Test]
       [Ignore("not written")]
       public void checkGemStage(){
@@ -160,17 +158,5 @@ namespace EntityTests
         // if the level reaches the threshold, then gems is 0 and level goes up.
         Assert.That(myEntity.checkGemLevel(currentGemLevel),Is.EqualTo("1"));
       }
-
-      // player specific stuff:
-
-      // **** Weapons for wagon
-      // set up a list of weapons (should be in another class)
-      // get/set weapon list for entity (name, damage, upgrade path, type)
-      // weapon types: held (fixed point on model),
-      // default weapons as part of entity type/default variables
-
-       // ***level up weapons
-      // grab 2 random weapons and one current weapon from the weapon list to upgrade
-      */
     }
 }
