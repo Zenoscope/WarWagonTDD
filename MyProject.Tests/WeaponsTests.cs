@@ -6,18 +6,29 @@ namespace WeaponsTests
    public class WeaponsTests
     {
       // starter weapon?
+      [SetUp]
+      public void Setup()
+      {
+      //     List<Weapon> = new List<Weapon>();
+      }
 
-      playerWeaponList = [];
+      // public void add to weaponList
+      [Test]
+      public void testAddToWeaponList(){
+        Assert.That(myEntity.addToWeaponList("Anvil",3,50),Is.EqualTo(True));
+      }
 
-     // Weapons for wagon
-      // set up a list of weapons, check it exists
-      // check for attributes and if they are set up.
-
-      // get/set weapon list for entity (name, damage, upgrade path, type)
-
-      // weapon types: held (fixed point on model),
-      // default weapon as part of entity type/default variables
+      /*
+       delete specified from weaponList
 
        // level up weapon
+       // how do level ups work?
+       // two types, strikenumber and damage.
+
+       upgradeWeaponDamage
+
+       upgradeWeaponStrike
+       */
+
     }
 }

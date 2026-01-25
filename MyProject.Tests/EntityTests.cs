@@ -126,7 +126,6 @@ namespace EntityTests
         Assert.That(myEntity.subtractFromHealth(injuryAmount),Is.EqualTo(0));
       }
 
-
       [Test]
       public void overHealEntity() {
         int healAmount = 25;
@@ -134,7 +133,8 @@ namespace EntityTests
         Assert.That(myEntity.addToHealth(healAmount),Is.EqualTo(100));
       }
 
-      [Test]      
+      /*
+      [Test]
       // Collect a gem
       public void collectAGem(){
          String entityType = "Enemy";
@@ -148,6 +148,7 @@ namespace EntityTests
          // add the gem value to the armour/health of the enemy entity, to a max value (%?)
          // add the gem to the GemCount
       }
+      */
 
       /*
       [Test]
@@ -157,6 +158,7 @@ namespace EntityTests
         // check the current level, each gem level should have a level (number or percentage)
         // if the level reaches the threshold, then gems is 0 and level goes up.
         Assert.That(myEntity.checkGemLevel(currentGemLevel),Is.EqualTo("1"));
-      }
+      */
+
     }
 }

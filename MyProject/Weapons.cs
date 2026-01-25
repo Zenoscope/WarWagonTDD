@@ -1,7 +1,22 @@
 using System;
+using System.Data;
 
 namespace Weapons
 {
+
+  public class Weapon {
+    public string Name { get; set;}
+    public int Damage { get; set;}
+    public int StrikeNumber { get; set;}
+
+    public Weapon(string name, int damage, int strikeNumber)
+      {
+        Name = name;
+        Damage = damage;
+        StrikeNumber = strikeNumber;
+   }
+  }
+
   // should there be bounds checking tests or should the tests
    public class Weapons
     {
@@ -9,27 +24,50 @@ namespace Weapons
 
       // list of Weapons
       // weapon name, damage,
+      /*
       playerWeapons = [
-      "Anvil",
-      "Axe",
-      "lightning",
-      "Flying hammer",
-      "Flying daggers",
-      "arrows" // area of effect
+      "Anvil", 3,50,
+      "Axe", 3,50,
+      "lightning", 3, 50,
+      "Flying hammer", 3, 50,
+      "Flying daggers", 3, 50
+      "arrows",  // area of effect
       ];
-
-      playerWeaponList = [];
+      */
+      List<Weapon> playerWeaponList = new List<Weapon>();
 
       // Weapons for wagon
       // set up a list of weapons, check it exists
       // check for attributes and if they are set up.
 
+      public void addToWeaponList(string name, int strikeNumber, int damage){
+        playerWeaponList.Add(new Weapon(name,strikeNumber,damage));
+      }
 
-      // get/set weapon list for entity (name, damage, upgrade path, type)
+      /*
+      public void getWeaponList(){
 
-      // weapon types: held (fixed point on model),
-      // default weapon as part of entity type/default variables
+      }
+      */
+      /*
+      public void deleteFromWeaponList() {
 
-       // level up weapon
+      }
+      */
+
+      // level up weapon
+      // how do level ups work?
+      // two types, strikenumber and damage.
+      /*
+      public void upgradeWeaponDamage() {
+
+      }
+      */
+      /*
+      public void upgradeWeaponStrike() {
+
+      }
+      */
+
     }
 }
