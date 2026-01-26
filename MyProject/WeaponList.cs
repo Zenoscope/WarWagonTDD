@@ -41,20 +41,7 @@ namespace WeaponList
     	listOfStrings[index] =  "def";
 	  */
 	  
-      // level up weapon
-	  
-      // how do level ups work?
-	  
-      // two types, strikenumber and damage.
-      /*
-      public void upgradeWeaponDamage() {
 
-      }
-      */
-      /*
-      public void upgradeWeaponStrike() {
-
-      }      */
    }
 	
   class main {
