@@ -16,6 +16,19 @@ namespace Weapon
         Damage = damage;
         StrikeNumber = strikeNumber;
     }
+
+	  // level up weapon	  
+      // how do level ups work?	  
+      // two types, strikenumber and damage.
+      /*
+      public void upgradeWeaponDamage() {
+
+      }
+      */
+      /*
+      public void upgradeWeaponStrike() {
+
+      }      */  
    }
 
   // for testing
