@@ -54,3 +54,6 @@ The addition of the required keyword mandates that callers must set those proper
 C#
 var p1 = new Person(); // Error! Required properties not set
 var p2 = new Person() { FirstName = "Grace", LastName = "Hopper" };
+
+Reading a key (can emulate this)
+https://www.dutton.me.uk/2009-02-24/non-blocking-keyboard-input-in-c/#:~:text=I%20quite%20frequently%20want%20to,//%20Do%20something%20more%20useful%20%7D
