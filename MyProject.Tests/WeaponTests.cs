@@ -1,22 +1,25 @@
 using NUnit.Framework;
 
-namespace WeaponsTests
+namespace WeaponTests
 {
   // should there be bounds checking tests or should the tests
-   public class WeaponsTests
+   public class WeaponTests
     {
+
       // starter weapon?
       [SetUp]
       public void Setup()
       {
-      //     List<Weapon> = new List<Weapon>();
+        List<Weapon.Weapon> playerWeaponList = new List<Weapon.Weapon>();
       }
 
       // public void add to weaponList
+      /*
       [Test]
       public void testAddToWeaponList(){
         Assert.That(myEntity.addToWeaponList("Anvil",3,50),Is.EqualTo(True));
       }
+      */
 
       /*
        delete specified from weaponList
