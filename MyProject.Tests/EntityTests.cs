@@ -1,4 +1,7 @@
 using NUnit.Framework;
+using System;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace EntityTests
 {
@@ -8,33 +11,15 @@ namespace EntityTests
    public class EntityTests
     {
 
-      private Entity.Entity myEntity;
+      private GameEntity.Entity myEntity;
 
       int moveAmount = 10;
 
       [SetUp]
       public void Setup()
       {
-          myEntity = new Entity.Entity();
+          myEntity = new GameEntity.Entity();
           Console.WriteLine(myEntity.GetHashCode());
-
-      }
-
-      // Spawn location
-      [Test]
-      [Ignore("This works")]
-      public void setXSpawnLoc(){
-        Console.WriteLine(myEntity.GetHashCode());
-        Console.WriteLine("Spawn X");
-        Assert.That(myEntity.setXSpawn(),Is.EqualTo(0));
-      }
-
-      [Test]
-      [Ignore("This works")]
-      public void setZSpawnLoc(){
-        Console.WriteLine("Spawn Y");
-        Console.WriteLine(myEntity.GetHashCode());
-        Assert.That(myEntity.setZSpawn(),Is.EqualTo(0));
       }
 
       [Test]
@@ -133,6 +118,37 @@ namespace EntityTests
         Assert.That(myEntity.addToHealth(healAmount),Is.EqualTo(100));
       }
 
+      [Test]
+      public void getMyList(){
+        List<GameWeapon.Weapon> myList = myEntity.GetList();        
+      }
+
+      /*
+      [Test]
+      public void addAWeaponToTheList(){
+        // GameEntity.Entity myEntity = new GameEntity.Entity();
+        GameWeapon.Weapon myWeapon = new GameWeapon.Weapon();
+
+        //myEntity._zloc = 100;
+        //myEntity._xloc = 100;
+
+        //myEntity._health = 0;
+        //myEntity._maxHealth = 0;
+
+        myWeapon.Name = "HammerFist";
+        myWeapon.StrikeNumber = 100;
+        myWeapon.Damage = 100;
+
+        Console.WriteLine("___myWeapon: {0}",myWeapon.Name);
+        Console.WriteLine("___xloc: {0}",myEntity._zloc);
+        // Console.WriteLine("___WeaponList {0}",myEntity.myWeaponList);
+        // myEntity.myWeaponList.Add(myWeapon);
+        myList = myEntity.GetList();
+        myEntity.AddToWeaponList(myList, myWeapon);
+        // Console.WriteLine("New weapon: {0}", myEntity.myWeaponList[0].Name);
+      }
+      */
+
       /*
       [Test]
       // Collect a gem
@@ -159,6 +175,9 @@ namespace EntityTests
         // if the level reaches the threshold, then gems is 0 and level goes up.
         Assert.That(myEntity.checkGemLevel(currentGemLevel),Is.EqualTo("1"));
       */
+
+
+
 
     }
 }

@@ -4,7 +4,7 @@ using System;
 // location, mesh etc.
 // also set things like health, mesh etc
 
-namespace Entity
+namespace GameEntity
 {
     public class Entity
     {
@@ -12,17 +12,38 @@ namespace Entity
      // these are properties, fields don’t have get/set
     // they can have default values set, but don’t get anything else.
 
-      public int _xloc { get;  set; } // no underscore as they are public
-      public int _zloc { get;  set; }
+      public int _xloc { get; private set; } // no underscore as they are public
+      public int _zloc { get; private set; }
 
       // fields
-      private int _health; //{ get; private set; }
-      private int _maxHealth; //{ get; private set; }
+      public int _health { get; private set; }
+      public int _maxHealth { get; private set; }
+
+      public string Name { get;  set; }
+
+      public List<GameWeapon.Weapon> myWeaponList { get;  set; }
+
+      // public List<GameWeapon.Weapon> myWeaponList { get;  set; }
+
+      // constructor
+      public Entity(){
+        this._xloc = 0;
+        this._zloc = 0;
+        this.Name = "";
+
+        this._health = 0;
+        this._maxHealth = 0;
+
+        List<GameWeapon.Weapon> myWeaponList = new List<GameWeapon.Weapon>();
+        Console.WriteLine("Entity intanced");
+      }
 
     // a constructor could go here to run things when the instance is first created
-    // e.g. checking a valid mesh exists, doing some other stuff.
+    // e.g. checking a valid mesh exists, doing some other stuff eg setting the
+    // spawn location
 
       // spawn
+      /*
       public int setXSpawn(int x = 0) {
           // xloc is optional, if not specified it's zero
           Console.WriteLine("spawn X: {0}", this._xloc);
@@ -34,6 +55,7 @@ namespace Entity
           Console.WriteLine("spawn Z: {0}", this._zloc);
           return this._zloc = z;
       }
+      */
 
       // get location
 
@@ -95,7 +117,7 @@ namespace Entity
       }
 
       public int subtractFromHealth(int amount){
-        _health -= amount;
+          _health -= amount;
 
         if (this._health <= 0) {
             killEntity();
@@ -109,7 +131,54 @@ namespace Entity
 
       public void killEntity(){
           Console.WriteLine("die!!");
+          // delete the instance
+          // this = null;
+
       }
+
+      public List<GameWeapon.Weapon> GetList(){
+        return this.myWeaponList;
+        }
+
+      //add weapon to the weapon List
+      public void AddToWeaponList(List<GameWeapon.Weapon> List, GameWeapon.Weapon thisWeapon ){
+        List.Add(thisWeapon);
+        Console.WriteLine("List length = {0}", List.Count);
+        Console.Write(List.ElementAt(List.Count - 1).Name);
+        Console.Write(" ", List.ElementAt(List.Count - 1).StrikeNumber);
+        Console.WriteLine(" ", List.ElementAt(List.Count - 1).Damage);
+        }
+
+      /*
+      public void GetWeaponList(List<Weapon> List){
+	  	for (i = 0; i++ ; i < List.Count) {
+			Console.WriteLine(List.ElementAt(i).Name);
+			Console.WriteLine(List.ElementAt(i).StrikeNumber);
+			Console.WriteLine(List.ElementAt(i).Damage);
+			}
+      }
+      */
+      /*
+      public void deleteFromWeaponList(List<Weapon> List, index) {
+	  		// delete the weapon at the index
+			// or delete by name (which should be unique)?
+			List.RemoveAt(index);
+      }
+      */
+
+	  // replace by name
+	  /*
+	  List<string> listOfStrings = new List<string> { "abc", "123", "ghi" };
+	  int index = listOfStrings.FindIndex(s => s == "123");
+	  if (index != -1)
+    	listOfStrings[index] =  "def";
+	  */
+
+
+
+
+
+      // replace weapon in list
 
       // set mesh
       // get mesh (not sure why though?)

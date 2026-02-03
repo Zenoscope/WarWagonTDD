@@ -5,26 +5,33 @@ using System.Data;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Weapon
+namespace GameWeapon
 {
   public class Weapon {
+
     public string Name { get; set;}
     public int Damage { get; set;}
     public int StrikeNumber { get; set;}
 
-    public Weapon(string name, int damage, int strikeNumber)
+    public Weapon(string name = "Blank", int strikeNumber = 0, int damage = 0)
       {
         Name = name;
         Damage = damage;
         StrikeNumber = strikeNumber;
+        Console.WriteLine("New weapon {0}", Name);
      }
 
-    public void createWeapon() {
+     // should be created by the entity
+    // public Weapon createWeapon(string name, int strikeNumber, int damage) {
+    /*
+    public string createWeapon(string name, int strikeNumber, int damage)
+      {
       // create the weapon
-      Weapon myWeapon = new Weapon("Anvil",50,50);
+      Weapon myWeapon = new Weapon(name,strikeNumber,damage);
       // add to the list
-
-    }
+      // return myWeapon;
+      return name;
+    }*/
 
 	  // level up weapon
       // how do level ups work?

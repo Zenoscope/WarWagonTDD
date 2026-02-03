@@ -6,12 +6,26 @@ namespace WeaponTests
    public class WeaponTests
     {
 
+      // private GameWeapon.Weapon myWeapon;
+
       // starter weapon?
+      /*
       [SetUp]
       public void Setup()
       {
-        List<Weapon.Weapon> playerWeaponList = new List<Weapon.Weapon>();
+        myWeapon = new GameWeapon.Weapon("Anvil",3,50);
+        Console.WriteLine("!!!!!!!!!  new weapon {0}", myWeapon.Name);
       }
+      */
+
+      [Test]
+      public void testCreateWeapon(){
+        //
+        GameWeapon.Weapon myWeapon1 = new GameWeapon.Weapon("Anvil",3,50);
+        // myWeaponList.add(myWeapon);
+        GameWeapon.Weapon myWeapon2 = new GameWeapon.Weapon("Sword",100,50);
+        // myWeaponList.add(myWeapon);
+        }
 
       // public void add to weaponList
       /*
