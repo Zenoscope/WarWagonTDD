@@ -21,7 +21,8 @@ namespace GameEntity
 
       public string Name { get;  set; }
 
-      public List<GameWeapon.Weapon> myWeaponList { get;  set; }
+      // public List<GameWeapon.Weapon> myWeaponList;
+      public Stack<GameWeapon.Weapon> myWeaponStack;// = new Stack<GameWeapon.Weapon>();
 
       // public List<GameWeapon.Weapon> myWeaponList { get;  set; }
 
@@ -34,8 +35,10 @@ namespace GameEntity
         this._health = 0;
         this._maxHealth = 0;
 
-        List<GameWeapon.Weapon> myWeaponList = new List<GameWeapon.Weapon>();
-        Console.WriteLine("Entity intanced");
+        // myWeaponList = new List<>();
+        // Stack<GameWeapon.Weapon> myWeaponStack = new Stack<GameWeapon.Weapon>();
+        myWeaponStack = new Stack<GameWeapon.Weapon>();
+        Console.WriteLine("Entity instanced");
       }
 
     // a constructor could go here to run things when the instance is first created
@@ -136,25 +139,38 @@ namespace GameEntity
 
       }
 
-      public List<GameWeapon.Weapon> GetList(){
-        return this.myWeaponList;
+      /*
+      * Weapon List fuctions
+      *
+      public List<GameWeapon.Weapon> GetWeaponList(){
+        return myWeaponList;
+        }
+      //add weapon to the weapon List
+      public virtual void AddToWeaponList(GameWeapon.Weapon myWeapon){
+        myWeaponList.Add(myWeapon);
+        Console.WriteLine("List length = {0}", myWeaponList.Count);
+        Console.Write(myWeaponList.ElementAt(myWeaponList.Count - 1).Name);
+        }
+        */
+
+      public Stack<GameWeapon.Weapon> GetWeaponStack(){
+        return myWeaponStack;
         }
 
       //add weapon to the weapon List
-      public void AddToWeaponList(List<GameWeapon.Weapon> List, GameWeapon.Weapon thisWeapon ){
-        List.Add(thisWeapon);
-        Console.WriteLine("List length = {0}", List.Count);
-        Console.Write(List.ElementAt(List.Count - 1).Name);
-        Console.Write(" ", List.ElementAt(List.Count - 1).StrikeNumber);
-        Console.WriteLine(" ", List.ElementAt(List.Count - 1).Damage);
-        }
+      public virtual void AddToWeaponStack(GameWeapon.Weapon myWeapon){
+          myWeaponStack.Push(myWeapon);
+          Console.WriteLine("List length = {0}", myWeaponStack.Count);
+          Console.Write(myWeaponStack.ElementAt(myWeaponStack.Count - 1).Name);
+          }
+
 
       /*
       public void GetWeaponList(List<Weapon> List){
-	  	for (i = 0; i++ ; i < List.Count) {
-			Console.WriteLine(List.ElementAt(i).Name);
-			Console.WriteLine(List.ElementAt(i).StrikeNumber);
-			Console.WriteLine(List.ElementAt(i).Damage);
+	  	  for (i = 0; i++ ; i < List.Count) {
+			     Console.WriteLine(List.ElementAt(i).Name);
+			     Console.WriteLine(List.ElementAt(i).StrikeNumber);
+			     Console.WriteLine(List.ElementAt(i).Damage);
 			}
       }
       */

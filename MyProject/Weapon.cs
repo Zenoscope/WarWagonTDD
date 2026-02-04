@@ -49,11 +49,13 @@ namespace GameWeapon
 
   // for testing
 
+  /*
   public static void Main()
 	{
 		List<Weapon> playerWeaponList = new List<Weapon>();
 		Weapon playerWeapons = new Weapon("Anvil",50,50);
 	 }
+   */
 
  } // class
 } // namespace

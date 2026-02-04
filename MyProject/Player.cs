@@ -13,15 +13,42 @@ namespace GamePlayer
 
      public int Score { get;  set; }
 
+     const int MaxWeaponNum = 5;
+
       // constructor
       public Player(){
         Name = "Player";
         // set location is done in the entity loc
         // mesh
-        int Score = 0;
+        // int Score = 0;
         // player also gets a weaponlist. This is to store the upgrades.
-        List<GameWeapon.Weapon> myUpgradedWeaponList = new List<GameWeapon.Weapon>();
+        //
+        //*****
+        //List<GameWeapon.Weapon> myUpgradedWeaponList = new List<GameWeapon.Weapon>();
+        Stack<GameWeapon.Weapon> myUpgradedWeaponStack = new Stack<GameWeapon.Weapon>();
       }
+
+      /*
+      * List
+      *
+      //add weapon to the weapon List
+      public override void AddToWeaponList(GameWeapon.Weapon myWeapon){
+        myWeaponList.Add(myWeapon);
+        Console.WriteLine("List length = {0}", myWeaponList.Count);
+        Console.Write(myWeaponList.ElementAt(myWeaponList.Count - 1).Name);
+
+        // if the list length is > 5 then remove it from the list.
+        }
+        */
+
+        //add weapon to the weapon stack
+        public override void AddToWeaponStack(GameWeapon.Weapon myWeapon){
+          myWeaponStack.Push(myWeapon);
+          Console.WriteLine("List length = {0}", myWeaponStack.Count);
+          Console.Write(myWeaponStack.ElementAt(myWeaponStack.Count - 1).Name);
+
+          // if the list length is > 5 then remove it from the list.
+          }
 
       // movement keys
 

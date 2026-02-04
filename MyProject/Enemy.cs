@@ -11,11 +11,15 @@ namespace GameEnemy
   // inherits from entity
   public class Enemy : GameEntity.Entity {
 
+      const int MaxWeaponNum = 1;
+
       // constructor
       public Enemy(){
         Name = "Enemy";
         // set the variables
         Console.WriteLine("Entity Name (constructor)):", Name);
+
+
         // type - mesh etc
         // spawn location
       }

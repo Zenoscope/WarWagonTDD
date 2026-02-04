@@ -118,38 +118,127 @@ namespace EntityTests
         Assert.That(myEntity.addToHealth(healAmount),Is.EqualTo(100));
       }
 
+      /*
+      *
+      *
       [Test]
-      public void getMyList(){
-        List<GameWeapon.Weapon> myList = myEntity.GetList();        
+      public void getMyWeaponList(){
+        List<GameWeapon.Weapon> myList = myEntity.GetWeaponList();
+      }
+      */
+
+      [Test]
+      public void getMyWeaponStack(){
+        Stack<GameWeapon.Weapon> myStack = myEntity.GetWeaponStack();
       }
 
       /*
       [Test]
-      public void addAWeaponToTheList(){
-        // GameEntity.Entity myEntity = new GameEntity.Entity();
+      public void addAWeapon(){
         GameWeapon.Weapon myWeapon = new GameWeapon.Weapon();
-
-        //myEntity._zloc = 100;
-        //myEntity._xloc = 100;
-
-        //myEntity._health = 0;
-        //myEntity._maxHealth = 0;
-
         myWeapon.Name = "HammerFist";
         myWeapon.StrikeNumber = 100;
         myWeapon.Damage = 100;
 
-        Console.WriteLine("___myWeapon: {0}",myWeapon.Name);
-        Console.WriteLine("___xloc: {0}",myEntity._zloc);
-        // Console.WriteLine("___WeaponList {0}",myEntity.myWeaponList);
-        // myEntity.myWeaponList.Add(myWeapon);
-        myList = myEntity.GetList();
-        myEntity.AddToWeaponList(myList, myWeapon);
-        // Console.WriteLine("New weapon: {0}", myEntity.myWeaponList[0].Name);
+        List<GameWeapon.Weapon> myList = myEntity.GetWeaponList();
+        myEntity.AddToWeaponList(myWeapon);
+        Console.WriteLine("New weapon: {0}", myEntity.myWeaponList[0].Name);
+      }
+
+      [Test]
+      public void addAWeaponFourTimes(){
+        // the player can only have a certain number of weapons
+        // before the existing ones are removed.
+
+        // List<GameWeapon.Weapon> myList = myEntity.GetWeaponList();
+        GameWeapon.Weapon myWeapon = new GameWeapon.Weapon();
+
+        myWeapon.Name = "HammerFist";
+        myWeapon.StrikeNumber = 100;
+        myWeapon.Damage = 100;
+        myEntity.AddToWeaponList(myWeapon);
+
+        myWeapon.Name = "Falling Anvil";
+        myWeapon.StrikeNumber = 100;
+        myWeapon.Damage = 100;
+        myEntity.AddToWeaponList(myWeapon);
+
+        myWeapon.Name = "Falling Anvil";
+        myWeapon.StrikeNumber = 100;
+        myWeapon.Damage = 100;
+        myEntity.AddToWeaponList(myWeapon);
+
+        myWeapon.Name = "Falling Anvil";
+        myWeapon.StrikeNumber = 100;
+        myWeapon.Damage = 100;
+        myEntity.AddToWeaponList(myWeapon);
+
+        List<GameWeapon.Weapon> myList = myEntity.GetWeaponList();
+        Console.WriteLine("New weapon: {0}", myEntity.myWeaponList[0].Name);
+      }
+
+      [Test]
+      public void addAWeaponTimes(){
+        // the player can only have a certain number of weapons
+        // before the existing ones are removed.
+        // List<GameWeapon.Weapon> myList = myEntity.GetWeaponList();
+        GameWeapon.Weapon myWeapon = new GameWeapon.Weapon();
+
+        myWeapon.Name = "HammerFist";
+        myWeapon.StrikeNumber = 100;
+        myWeapon.Damage = 100;
+        myEntity.AddToWeaponList(myWeapon);
+
+        List<GameWeapon.Weapon> myList = myEntity.GetWeaponList();
+        Console.WriteLine("New weapon: {0}", myEntity.myWeaponList[0].Name);
+      }
+      */
+      /*
+      [Test]
+      public void replaceAWeapon(){
+        // the player can only have a certain number of weapons
+        // before the existing ones are removed.
+
+        // List<GameWeapon.Weapon> myList = myEntity.GetWeaponList();
+        GameWeapon.Weapon myWeapon = new GameWeapon.Weapon();
+
+        myWeapon.Name = "Number1";
+        myWeapon.StrikeNumber = 100;
+        myWeapon.Damage = 100;
+        myEntity.AddToWeaponList(myWeapon);
+
+        myWeapon.Name = "Number2";
+        myWeapon.StrikeNumber = 100;
+        myWeapon.Damage = 100;
+        myEntity.AddToWeaponList(myWeapon);
+
+        myWeapon.Name = "Number3";
+        myWeapon.StrikeNumber = 100;
+        myWeapon.Damage = 100;
+        myEntity.AddToWeaponList(myWeapon);
+
+        myWeapon.Name = "Number4";
+        myWeapon.StrikeNumber = 100;
+        myWeapon.Damage = 100;
+        myEntity.AddToWeaponList(myWeapon);
+
+        myWeapon.Name = "Number5";
+        myWeapon.StrikeNumber = 100;
+        myWeapon.Damage = 100;
+        myEntity.AddToWeaponList(myWeapon);
+
+        myWeapon.Name = "Number6";
+        myWeapon.StrikeNumber = 100;
+        myWeapon.Damage = 100;
+        myEntity.AddToWeaponList(myWeapon);
+
+        List<GameWeapon.Weapon> myList = myEntity.GetWeaponList();
+        Console.WriteLine("New weapon: {0}", myEntity.myWeaponList[0].Name);
       }
       */
 
       /*
+
       [Test]
       // Collect a gem
       public void collectAGem(){
