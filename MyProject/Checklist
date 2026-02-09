@@ -1,0 +1,18 @@
+[x]Add new weapon to list
+[x]remove weapon
+[x]remove weapon if list hits size x
+[x]clear weapon stack (entity dies)
+[N/A]Delete old weapon
+
+[x]entity facing direction
+
+[]Collect gem
+[]Trigger weapon upgrade
+[]Upgrade weapon
+
+[]Enemy types (enum? enum of enemy types?)
+[]spawn different enemy types in random locations
+[]Enemy dies (drops gem)
+[]Attack with weapon
+[]Check if enemy is nearby
+[]Damage enemy

@@ -12,223 +12,157 @@ namespace GameEntity
      // these are properties, fields don’t have get/set
     // they can have default values set, but don’t get anything else.
 
-      public int _xloc { get; private set; } // no underscore as they are public
-      public int _zloc { get; private set; }
+      public int XLoc { get; private set; } // no underscore as they are public
+      public int ZLoc { get; private set; }
 
       // fields
-      public int _health { get; private set; }
-      public int _maxHealth { get; private set; }
+      public int Health { get; private set; }
+      public int MaxHealth { get; private set; }
 
-      public string Name { get;  set; }
+      public string Name { get; set; }
+
+      public virtual int MaxWeaponStackSize { get; set; }
+
+      // public virtual enum GemLevelsList;
 
       // public List<GameWeapon.Weapon> myWeaponList;
-      public Stack<GameWeapon.Weapon> myWeaponStack;// = new Stack<GameWeapon.Weapon>();
+      public Stack<GameWeapon.Weapon> MyWeaponStack;// = new Stack<GameWeapon.Weapon>();
+
+      public string Mesh = "";
+
+      public int EntityDirection { get; set; }
+
+      // track the gem level
+      public int CurrentGemLevel { get; set; }
+
+      // list of upgrade levels for gem collection
+      //public enum GemLevelsList { 10,25,50,100,250,500}
+
+      // This is the gems which have been collected
+      public int CurrentAccumulatedGems { get; set; }
 
       // public List<GameWeapon.Weapon> myWeaponList { get;  set; }
 
       // constructor
       public Entity(){
-        this._xloc = 0;
-        this._zloc = 0;
-        this.Name = "";
+        XLoc = 0;
+        ZLoc = 0;
+        Name = "";
 
-        this._health = 0;
-        this._maxHealth = 0;
+        Health = 0;
+        MaxHealth = 0;
 
-        // myWeaponList = new List<>();
-        // Stack<GameWeapon.Weapon> myWeaponStack = new Stack<GameWeapon.Weapon>();
-        myWeaponStack = new Stack<GameWeapon.Weapon>();
-        Console.WriteLine("Entity instanced");
+        // aspawns at zero and then gets rotated.
+        EntityDirection = 0;
+
+        CurrentGemLevel = 0;
+
+        MyWeaponStack = new Stack<GameWeapon.Weapon>();
+        Console.WriteLine("ENT___Entity instanced");
       }
-
-    // a constructor could go here to run things when the instance is first created
-    // e.g. checking a valid mesh exists, doing some other stuff eg setting the
-    // spawn location
-
-      // spawn
-      /*
-      public int setXSpawn(int x = 0) {
-          // xloc is optional, if not specified it's zero
-          Console.WriteLine("spawn X: {0}", this._xloc);
-          return this._xloc = x;
-      }
-
-      public int setZSpawn(int z = 0) {
-          // zloc is optional, if not specified it's zero
-          Console.WriteLine("spawn Z: {0}", this._zloc);
-          return this._zloc = z;
-      }
-      */
 
       // get location
 
-      public int getXLoc() {
-          Console.WriteLine("get x: {0}", this._xloc);
-          return this._xloc;
+      public int GetXLoc() {
+          Console.WriteLine("get x: {0}", XLoc);
+          return XLoc;
       }
 
-      public int getZLoc() {
-          Console.WriteLine("get z: {0}", this._zloc);
-          return this._zloc;
+      public int GetZLoc() {
+          Console.WriteLine("get z: {0}", ZLoc);
+          return ZLoc;
       }
 
-
-      public int setXLoc(int amount = 0) {
+      public int SetXLoc(int amount = 0) {
           // will also work with negative numbers, so moving that way...
           // what about rotation though? hmm.
           //x_loc = x_loc + amount;
-          Console.WriteLine("set x: {0}", this._xloc);
-          return this._xloc += amount;
+          Console.WriteLine("set x: {0}", XLoc);
+          return XLoc += amount;
       }
 
-
-      public int setZLoc(int amount) {
+      public int SetZLoc(int amount) {
           //this.y_loc = this.y_loc + amount;
-          Console.WriteLine("set z: {0}", this._zloc);
-          return this._zloc += amount;
+          Console.WriteLine("set z: {0}", ZLoc);
+          return ZLoc += amount;
       }
 
       // Health
 
-      public int spawnSetHealth(int amount = 15) {
+      public int SpawnSetHealth(int amount = 15) {
           // set this when starting out
           // if there is an item which changes it, then it gets
           // done somewhere else
-          this._maxHealth = amount;
-          this._health = amount;
-          Console.WriteLine("Max health {0}",this._maxHealth);
-          Console.WriteLine("health {0}",this._health);
-          return this._maxHealth;
+          MaxHealth = amount;
+          Health = amount;
+          Console.WriteLine("Max health {0}", MaxHealth);
+          Console.WriteLine("health {0}", Health);
+          return MaxHealth;
       }
 
-      public int getHealth() {
-          Console.WriteLine("get health again: {0}",this._health);
-          return this._health;
+      public int GetHealth() {
+          Console.WriteLine("get health again: {0}", Health);
+          return Health;
       }
 
-      public int addToHealth(int amount){
-        Console.WriteLine("get (add)health: {0}",this._health);
-        Console.WriteLine("get (add)maxhealth : {0}",this._maxHealth);
+      public int AddToHealth(int amount){
+        Console.WriteLine("get (add)health: {0}", Health);
+        Console.WriteLine("get (add)maxhealth : {0}", MaxHealth);
 
-        _health += amount;
+        Health += amount;
 
-        if (_health > _maxHealth ) {
-            _health = _maxHealth;
+        if (Health > MaxHealth ) {
+            Health = MaxHealth;
         }
 
-        return _health;
+        return Health;
       }
 
-      public int subtractFromHealth(int amount){
-          _health -= amount;
+      public int SubtractFromHealth(int amount){
+          Health -= amount;
 
-        if (this._health <= 0) {
-            killEntity();
+        if (Health <= 0) {
+            KillEntity();
             return 0;
           }
         else {
-             Console.WriteLine("set injury: {0}",this._health - amount);
-              return this._health;
+             Console.WriteLine("set injury: {0}",Health - amount);
+              return Health;
             }
       }
 
-      public void killEntity(){
+      public virtual void KillEntity(){
           Console.WriteLine("die!!");
+          ClearWeaponStack();
           // delete the instance
           // this = null;
-
       }
 
-      /*
-      * Weapon List fuctions
-      *
-      public List<GameWeapon.Weapon> GetWeaponList(){
-        return myWeaponList;
-        }
-      //add weapon to the weapon List
-      public virtual void AddToWeaponList(GameWeapon.Weapon myWeapon){
-        myWeaponList.Add(myWeapon);
-        Console.WriteLine("List length = {0}", myWeaponList.Count);
-        Console.Write(myWeaponList.ElementAt(myWeaponList.Count - 1).Name);
-        }
-        */
-
       public Stack<GameWeapon.Weapon> GetWeaponStack(){
-        return myWeaponStack;
+        return MyWeaponStack;
         }
 
       //add weapon to the weapon List
       public virtual void AddToWeaponStack(GameWeapon.Weapon myWeapon){
-          myWeaponStack.Push(myWeapon);
-          Console.WriteLine("List length = {0}", myWeaponStack.Count);
-          Console.Write(myWeaponStack.ElementAt(myWeaponStack.Count - 1).Name);
-          }
+        MyWeaponStack.Push(myWeapon);
+        }
 
+      public void ClearWeaponStack(){
+         // for some reason this doesn't work?
+         MyWeaponStack.Clear();
+         }
 
-      /*
-      public void GetWeaponList(List<Weapon> List){
-	  	  for (i = 0; i++ ; i < List.Count) {
-			     Console.WriteLine(List.ElementAt(i).Name);
-			     Console.WriteLine(List.ElementAt(i).StrikeNumber);
-			     Console.WriteLine(List.ElementAt(i).Damage);
-			}
-      }
-      */
-      /*
-      public void deleteFromWeaponList(List<Weapon> List, index) {
-	  		// delete the weapon at the index
-			// or delete by name (which should be unique)?
-			List.RemoveAt(index);
-      }
-      */
+       public int LeftRotate(int RotateAmount = 10){
+         EntityDirection = EntityDirection + RotateAmount;
+         return EntityDirection;
+       }
 
-	  // replace by name
-	  /*
-	  List<string> listOfStrings = new List<string> { "abc", "123", "ghi" };
-	  int index = listOfStrings.FindIndex(s => s == "123");
-	  if (index != -1)
-    	listOfStrings[index] =  "def";
-	  */
+       public int RightRotate(int RotateAmount = 10){
+         EntityDirection = EntityDirection - RotateAmount;
+         return EntityDirection;
+       }
 
-
-
-
-
-      // replace weapon in list
-
-      // set mesh
-      // get mesh (not sure why though?)
-
-      // set/get list of injury animations?
-      // play movevement animations?
-    }
-}
-
-/*
-class TestClass
-{
-    static void Main(string[] args)
-    {
-        // force health, x,y loc, object type
-        int EntXLoc;
-        var myEntity = new Entity.Entity();
-        myEntity._xloc = 0;
-        myEntity._zloc = 0;
-        myEntity.setXSpawn();
-        myEntity.setYSpawn();
-        Console.WriteLine("EntXLoc: {0}", myEntity._xloc);
-
-        EntXLoc = myEntity.getXLoc();
-        Console.WriteLine("EntXLoc1: {0}", EntXLoc);
-        EntXLoc = myEntity.setXLoc(100);
-        Console.WriteLine("EntXLoc2: {0}", EntXLoc);
-        EntXLoc = myEntity.getXLoc();
-        Console.WriteLine("EntXLoc1: {0}", myEntity._xloc);
-        Console.WriteLine("EntXLoc3: {0}", EntXLoc);
-        EntXLoc = myEntity.setXLoc(-100);
-        Console.WriteLine("EntXLoc3: {0}", EntXLoc);
 
 
     }
 }
-*/

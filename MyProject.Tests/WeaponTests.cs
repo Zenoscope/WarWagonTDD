@@ -20,11 +20,9 @@ namespace WeaponTests
 
       [Test]
       public void testCreateWeapon(){
-        //
+        Console.WriteLine("WEA_Create Weapon");
         GameWeapon.Weapon myWeapon1 = new GameWeapon.Weapon("Anvil",3,50);
-        // myWeaponList.add(myWeapon);
         GameWeapon.Weapon myWeapon2 = new GameWeapon.Weapon("Sword",100,50);
-        // myWeaponList.add(myWeapon);
         }
 
       // public void add to weaponList

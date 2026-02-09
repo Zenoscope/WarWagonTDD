@@ -15,17 +15,23 @@ namespace GamePlayer
 
      const int MaxWeaponNum = 5;
 
+     private enum GemLevelsList {
+        10, 25, 50, 100, 250, 500
+       }
+
       // constructor
       public Player(){
         Name = "Player";
+
+        int MaxWeaponStackSize = 1;
+
         // set location is done in the entity loc
         // mesh
         // int Score = 0;
         // player also gets a weaponlist. This is to store the upgrades.
         //
         //*****
-        //List<GameWeapon.Weapon> myUpgradedWeaponList = new List<GameWeapon.Weapon>();
-        Stack<GameWeapon.Weapon> myUpgradedWeaponStack = new Stack<GameWeapon.Weapon>();
+        Stack<GameWeapon.Weapon> MyUpgradedWeaponStack = new Stack<GameWeapon.Weapon>();
       }
 
       /*
@@ -41,14 +47,19 @@ namespace GamePlayer
         }
         */
 
-        //add weapon to the weapon stack
-        public override void AddToWeaponStack(GameWeapon.Weapon myWeapon){
-          myWeaponStack.Push(myWeapon);
-          Console.WriteLine("List length = {0}", myWeaponStack.Count);
-          Console.Write(myWeaponStack.ElementAt(myWeaponStack.Count - 1).Name);
-
+      //add weapon to the weapon stack
+      public override void AddToWeaponStack(GameWeapon.Weapon MyWeapon){
           // if the list length is > 5 then remove it from the list.
+          if (MyWeaponStack.Count < MaxWeaponStackSize){
+                MyWeaponStack.Push(MyWeapon);
+            }
+          else {
+            // delete the top item in the stack (first one added)
+            MyWeaponStack.Pop();
+            // add the one to add.
+            MyWeaponStack.Push(MyWeapon);
           }
+        }
 
       // movement keys
 

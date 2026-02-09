@@ -7,11 +7,43 @@ namespace EnemyTests
 
      // create a new player instance
      [Test]
-     public void createPlayer(){
-       GameEnemy.Enemy myEnemy = new GameEnemy.Enemy();
+     public void createEnemyOrc(){
+       GameEnemy.Enemy myEnemy = new GameEnemy.Enemy("Orc");
        Console.WriteLine("Enemy Name:", myEnemy.Name);
-       Console.WriteLine("Enemy X location:", myEnemy._xloc);
-       Console.WriteLine("Enemy Y location:", myEnemy._zloc);
+       Console.WriteLine("Enemy X location:", myEnemy.XLoc);
+       Console.WriteLine("Enemy Y location:", myEnemy.ZLoc);
      }
+
+     
+
+     /*
+     // create a new player instance
+     [Test]
+     public void createEnemyOrc(){
+       GameEnemy.Enemy myEnemy = new GameEnemy.Enemy("Mage");
+       Console.WriteLine("Enemy Name:", myEnemy.Name);
+       Console.WriteLine("Enemy X location:", myEnemy.XLoc);
+       Console.WriteLine("Enemy Y location:", myEnemy.ZLoc);
+     }
+
+     // create a new player instance
+     [Test]
+     public void createEnemyOrc(){
+       GameEnemy.Enemy myEnemy = new GameEnemy.Enemy("Goblin");
+       Console.WriteLine("Enemy Name:", ZLlmyEnemy.Name);
+       Console.WriteLine("Enemy X location:", myEnemy.XLoc);
+       Console.WriteLine("Enemy Y location:", myEnemy.ZLoc);
+     }
+
+     // create a new player instance
+     [Test]
+     public void createEnemyOrc(){
+       GameEnemy.Enemy myEnemy = new GameEnemy.Enemy("Grubber");
+       Console.WriteLine("Enemy Name:", myEnemy.Name);
+       Console.WriteLine("Enemy X location:", myEnemy.XLoc);
+       Console.WriteLine("Enemy Y location:", myEnemy.ZLoc);
+     }
+     */
+
    }
  }
