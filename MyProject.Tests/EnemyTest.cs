@@ -2,8 +2,17 @@ using NUnit.Framework;
 
 namespace EnemyTests
 {
-  public class EnemyTest
+  public class EnemyTests
    {
+
+     private GameEnemy.Enemy MyEntity;
+
+     [SetUp]
+     public void Setup()
+     {
+         MyEntity = new GameEnemy.Enemy("Grubber");
+     }
+
 
      // create a new player instance
      [Test]
@@ -13,8 +22,6 @@ namespace EnemyTests
        Console.WriteLine("Enemy X location:", myEnemy.XLoc);
        Console.WriteLine("Enemy Y location:", myEnemy.ZLoc);
      }
-
-     
 
      /*
      // create a new player instance

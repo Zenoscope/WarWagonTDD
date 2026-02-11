@@ -91,3 +91,31 @@ _–-------- coding:
 
 Weapon list will spawn weapons and then add them to the list.
 The weapon class "should" handle the upgrades, but it may need to know where they are in the list.
+
+
+// 
+
+using System;
+
+public class HelloWorld
+{
+
+  public static void Main(string[] args)
+    {
+
+     int[] GemLevelsList =  { 10, 25, 50, 100, 250, 500 };
+
+     int Level = 0;
+     int GemCount = 0;
+
+     while (GemCount < 100 ){
+         GemCount++;
+         Console.WriteLine("GemCount = {0}", GemCount);
+         if ( GemCount == GemLevelsList[Level] ){
+             Level++;
+             GemCount = 0;
+             Console.WriteLine("Level = {0}", Level);
+            }
+        }
+    }
+}

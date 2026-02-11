@@ -16,8 +16,8 @@ namespace GameEntity
       public int ZLoc { get; private set; }
 
       // fields
-      public int Health { get; private set; }
-      public int MaxHealth { get; private set; }
+      public int Health { get; set; }
+      public int MaxHealth { get; set; }
 
       public string Name { get; set; }
 
@@ -33,7 +33,8 @@ namespace GameEntity
       public int EntityDirection { get; set; }
 
       // track the gem level
-      public int CurrentGemLevel { get; set; }
+      public int GemCount { get; set ; } = 0;
+      public int Level { get; set ; } = 0;
 
       // list of upgrade levels for gem collection
       //public enum GemLevelsList { 10,25,50,100,250,500}
@@ -42,6 +43,9 @@ namespace GameEntity
       public int CurrentAccumulatedGems { get; set; }
 
       // public List<GameWeapon.Weapon> myWeaponList { get;  set; }
+
+      // int[] GemLevelsList = new int[1];
+      public int[] GemLevelsList;
 
       // constructor
       public Entity(){
@@ -55,10 +59,8 @@ namespace GameEntity
         // aspawns at zero and then gets rotated.
         EntityDirection = 0;
 
-        CurrentGemLevel = 0;
-
         MyWeaponStack = new Stack<GameWeapon.Weapon>();
-        Console.WriteLine("ENT___Entity instanced");
+        //Console.WriteLine("ENT___Entity instanced");
       }
 
       // get location
@@ -162,6 +164,10 @@ namespace GameEntity
          return EntityDirection;
        }
 
+       public void CollectGem(){
+          // collision detection etc
+          GemCount++;
+       }
 
 
     }

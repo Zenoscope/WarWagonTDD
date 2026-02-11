@@ -5,9 +5,7 @@ using System.Collections.Generic;
 
 namespace EntityTests
 {
-
   // should there be bounds checking tests or should the tests
-
    public class EntityTests
     {
 
@@ -19,7 +17,7 @@ namespace EntityTests
       public void Setup()
       {
           MyEntity = new GameEntity.Entity();
-          Console.WriteLine(MyEntity.GetHashCode());
+
       }
 
       [Test]
@@ -272,19 +270,29 @@ namespace EntityTests
         // check the current level, each gem level should have a level (number or percentage)
         // if the level reaches the threshold, then gems is 0 and level goes up.
         Console.WriteLine("ENT____GetGemLevel");
-        Console.WriteLine("Current Gem Level = {0}", MyEntity.CurrentGemLevel);
-        // Assert.That(MyEntity.CurrentGemLevel,Is.EqualTo("0"));
+        Console.WriteLine("Current Gem Level = {0}", MyEntity.GemCount);
+        // Assert.That(MyEntity.GemCount,Is.EqualTo("0"));
         }
 
       [Test]
-      public void GetThenSetGemLevel(){
+      public void GetThenSetGemCount(){
         // check the current level, each gem level should have a level (number or percentage)
         // if the level reaches the threshold, then gems is 0 and level goes up.
         Console.WriteLine("ENT____Get/SetGemLevel");
-        MyEntity.CurrentGemLevel = 5;
-        Console.WriteLine("Current Gem Level = {0}", MyEntity.CurrentGemLevel);
+        MyEntity.GemCount = 5;
+        Console.WriteLine("Current Gem Level = {0}", MyEntity.GemCount);
         //Assert.That(MyEntity.CurrentGemLevel,Is.EqualTo("0"));
         }
+
+        [Test]
+        public void CollectGem(){
+          Console.WriteLine("ENT_Collect Gem");
+          Console.WriteLine("GemCount = {0}", MyEntity.GemCount);
+          MyEntity.CollectGem();
+          Assert.That(MyEntity.GemCount,Is.EqualTo(1));
+          Console.WriteLine("GemCount = {0}", MyEntity.GemCount);
+        }
+
 
     }
 }

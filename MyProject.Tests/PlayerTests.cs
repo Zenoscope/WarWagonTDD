@@ -5,21 +5,36 @@ namespace PlayerTests
   public class PlayerTests
    {
 
+     private GamePlayer.Player MyEntity;
+
+     [SetUp]
+     public void Setup()
+     {
+         MyEntity = new GamePlayer.Player();
+     }
+
      [Test]
      public void GetPlayerGemLevels(){
-      Console.WriteLine("GemLevelsList = {0}" , MyEntity.GemLevelsList.1 );
+      Console.WriteLine("GemLevelsList = {0}" , MyEntity.GemLevelsList[0]);
       // Assert.That(MyEntity.GemLevelsList.1,Is.EqualTo(10));
-     }      
+     }
 
      // create a new player instance
      [Test]
      public void CreatePlayer(){
-       GamePlayer.Player myPlayer = new GamePlayer.Player();
+       //GamePlayer.Player myPlayer = new GamePlayer.Player();
        Console.WriteLine("Ply _PlayerTest");
-       Console.WriteLine(" Entity Name:{0}", myPlayer.Name);
-       Console.WriteLine(" Entity X location:{0}", myPlayer.XLoc);
-       Console.WriteLine(" Entity Y location:{0}", myPlayer.ZLoc);
-       Console.WriteLine(" Entity Y location:{0}", myPlayer.Score);
+       Console.WriteLine(" Entity Name:{0}", MyEntity.Name);
+       Console.WriteLine(" Entity X location:{0}", MyEntity.XLoc);
+       Console.WriteLine(" Entity Y location:{0}", MyEntity.ZLoc);
+       Console.WriteLine(" Entity Y location:{0}", MyEntity.Score);
+     }
+
+
+     [Test]
+     public void TriggerPlayerUpgrade(){
+       MyEntity.TriggerPlayerUpgrade();
+       Assert.That(MyEntity.,Is.EqualTo(10));
      }
 
    }

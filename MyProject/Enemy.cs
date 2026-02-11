@@ -12,21 +12,23 @@ namespace GameEnemy
 
   public class Enemy : GameEntity.Entity { //2
 
-      const int MaxWeaponNum = 1;
+    //int[] GemLevelsList =  { 1, 2, 3 };
 
-      enum GemLevelsList {
-        1, 2, 3
-      };
+    int GemDropAmount;
+
+    const int MaxWeaponNum = 1;
+    string EnemyType;
 
       // constructor
-
       public Enemy(string EnemyType){ //heh 3
         Name = "Enemy";
 
         // set the variables
         Console.WriteLine("Entity Name (constructor) {0}:", Name);
 
-        int GemDropAmount = 15;
+        GemDropAmount = 15;
+        GemCount = 0;
+        GemLevelsList = [ 1,2,3 ];
 
         // range for spawning the enemy
         // it should also check that the
@@ -43,47 +45,46 @@ namespace GameEnemy
         // set spawn location
         SetSpawnLocation(XPos, YPos);
 
-        // type - mesh etc
+        int WeaponRange;
 
-        /*
+        // Enemy type - mesh etc
         switch(EnemyType)
           { // 4
           case "Orc":
-            health = 50;
-            maxHealth = 50;
-            range = 5;
-            mesh = "";
+            Health = 50;
+            MaxHealth = 50;
+            WeaponRange = 5;
+            Mesh = "";
             break;
           case "Mage":
-            health = 150;
-            maxHealth = 150;
-            range = 15;
-            mesh = "";
-            break
+            Health = 150;
+            MaxHealth = 150;
+            WeaponRange = 15;
+            Mesh = "";
+            break;
           case "Goblin":
-            health = 20;
-            maxHealth = 20;
-            range = 5;
-            mesh = "";
+            Health = 20;
+            MaxHealth = 20;
+            WeaponRange = 5;
+            Mesh = "";
             break;
           case "Grubber":
-            health = 10;
-            maxHealth = 10;
-            range = 5;
-            mesh = "";
+            Health = 10;
+            MaxHealth = 10;
+            WeaponRange = 5;
+            Mesh = "";
+            break;
           default:
-            health = 5;
-            maxHealth = 5;
-            range = 5;
-            mesh = "";
+            Health = 5;
+            MaxHealth = 5;
+            WeaponRange = 5;
+            Mesh = "";
             break;
           } // 4
-          */
 
           Console.WriteLine("{0}", EnemyType);
 
       } //3
-
 
       public virtual void SetSpawnLocation(int XLoc,int ZLoc){
           // check to see if there is something there already
@@ -100,7 +101,7 @@ namespace GameEnemy
 
       private void DropGem(){
         // drop a gem at the location\
-        // int gem = GemDropAmount;
+        int gem = GemDropAmount;
         Console.WriteLine("Gem dropped at {0} {1}",  XLoc,ZLoc);
       } //3
 
