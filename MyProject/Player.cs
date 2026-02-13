@@ -18,7 +18,7 @@ namespace GamePlayer
         Name = "Player";
         GemCount = 0;
         Level = 0;
-        GemLevelsList = [ 10, 25, 50, 100, 250, 500 ];
+        GemLevelsList = [ 10, 25, 50, 100, 250, 500 ];       
 
         MaxWeaponStackSize = 5;
 
@@ -37,7 +37,7 @@ namespace GamePlayer
             // add the one to add.
             MyWeaponStack.Push(MyWeapon);
           }
-        }       
+        }
 
 
       // movement keys

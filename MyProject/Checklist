@@ -1,18 +1,102 @@
+
+--- Weapons
 [x]Add new weapon to list
 [x]remove weapon
 [x]remove weapon if list hits size x
 [x]clear weapon stack (entity dies)
 [N/A]Delete old weapon
 
+--- Entity
 [x]entity facing direction
 
+--- Gem collection
 [x]Collect gem
 []Trigger weapon upgrade
 []Upgrade weapon
 
+--- Enemies
 []Enemy types (enum? enum of enemy types?)
 []spawn different enemy types in random locations
 []Enemy dies (drops gem)
 []Attack with weapon
-[]Check if enemy is nearby
 []Damage enemy
+
+--- Unity start
+[] Import mesh
+[] move mesh
+[] rotate mesh
+
+-- Unity player
+[] spawn player
+[] player camera
+[] grab stuff
+[] move player in space
+[] plug something in the glove?
+
+--- Unity Enemies
+[] spawn enemies
+[] collision detection
+  [] play a hit animation
+  [] play for different weapons
+[] move enemy towards player
+[] delete enemy if it's dead
+
+--- Models
+Create all models
+Rig models:
+ - walk
+ - run
+ - enemy hit
+ - take a hit
+ - die
+ - upgrade
+
+Different animations for each weapon.
+
+
+
+
+
+
+
+if (GemCount == threshold) {
+  pick 3 random weapons from the allweaponslist
+
+    if the weapon is in the player weapon list
+     upgrade (both lists)
+    else
+      replace weapon
+}
+else {
+
+}
+
+enemy collects gem
+  buff existing weapon + 10 damage
+  mage + 10 for range
+
+
+  using System;
+
+  public class HelloWorld
+  {
+
+    public static void Main(string[] args)
+      {
+
+       int[] GemLevelsList =  { 10, 25, 50, 100, 250, 500 };
+
+       int Level = 0;
+       int GemCount = 0;
+
+       while (GemCount < 100 ){
+           GemCount++;
+           Console.WriteLine("GemCount = {0}", GemCount);
+           if ( GemCount == GemLevelsList[Level] ){
+               Level++;
+               GemCount = 0;
+               Console.WriteLine("Level = {0}", Level);
+              }
+          }
+      }
+  }

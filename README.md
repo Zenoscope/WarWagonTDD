@@ -1,4 +1,12 @@
 
+// TDD tests
+Assert.AreEqual(5, result);
+Assert.IsInstanceOfType(number, typeof(int));
+Assert.Throws<OverflowException>(() =>
+    {
+        int result = checked(maxValue + 1);
+    });
+
 TDD scripting <br>
 https://blog.coscreen.co/blog/tdd-in-c-guide/ <br>
 <br>
@@ -93,7 +101,7 @@ Weapon list will spawn weapons and then add them to the list.
 The weapon class "should" handle the upgrades, but it may need to know where they are in the list.
 
 
-// 
+//
 
 using System;
 

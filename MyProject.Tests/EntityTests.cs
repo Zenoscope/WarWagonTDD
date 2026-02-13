@@ -293,6 +293,9 @@ namespace EntityTests
           Console.WriteLine("GemCount = {0}", MyEntity.GemCount);
         }
 
-
+        [Test]
+        public void TriggerWeaponUpgrade(){
+            TriggerWeaponUpgrade();
+        }
     }
 }

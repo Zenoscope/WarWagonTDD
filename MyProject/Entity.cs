@@ -169,6 +169,9 @@ namespace GameEntity
           GemCount++;
        }
 
+       public void TriggerWeaponUpgrade(){
+         
+       }
 
     }
 }

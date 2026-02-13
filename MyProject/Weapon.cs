@@ -18,6 +18,8 @@ namespace GameWeapon
         Name = name;
         Damage = damage;
         StrikeNumber = strikeNumber;
+        Range = 0;
+        Durability = 0;        
         Console.WriteLine("New weapon {0}", Name);
      }
 
