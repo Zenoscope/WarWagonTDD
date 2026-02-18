@@ -7,11 +7,25 @@ using System.Linq;
 
 namespace GameWeapon
 {
+
+  public enum DamageEnum { Fire, Lightning, Water, Ice, Cut, Strike, Earth }
+  public enum EffectEnum { GroundHit, VertHit, HorizHit, AoE, Chain, Location }
+
   public class Weapon {
 
-    public string Name { get; set;}
-    public int Damage { get; set;}
-    public int StrikeNumber { get; set;}
+    // do they need to be public?
+    public string Name { get; set;} // name of weapon
+    public int Damage { get; set;} // damage delt
+    public int StrikeNumber { get; set;} // individual items spawned
+    public int Range { get; set;} // max range from player
+    public int Durability { get; set;} // max hits per item
+    public int Cooldown { get; set;} // cooldown before respawn in seconds     // etc
+    public int CurrentLevel { get; set;}
+    public int MaxLevel { get; set;}
+
+    public DamageEnum DamageType { get; set;}
+
+    public EffectEnum EffectType { get; set;}
 
     public Weapon(string name = "Blank", int strikeNumber = 0, int damage = 0)
       {
@@ -19,7 +33,12 @@ namespace GameWeapon
         Damage = damage;
         StrikeNumber = strikeNumber;
         Range = 0;
-        Durability = 0;        
+        Durability = 0;//?
+        Cooldown = 0;
+        DamageType = DamageEnum.Fire;
+        CurrentLevel = 0;
+        MaxLevel = 1;
+        EffectType = EffectEnum.GroundHit;
         Console.WriteLine("New weapon {0}", Name);
      }
 

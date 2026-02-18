@@ -32,20 +32,17 @@ namespace GameEntity
 
       public int EntityDirection { get; set; }
 
-      // track the gem level
+      // track the gem level and entites level
       public int GemCount { get; set ; } = 0;
       public int Level { get; set ; } = 0;
-
-      // list of upgrade levels for gem collection
-      //public enum GemLevelsList { 10,25,50,100,250,500}
-
-      // This is the gems which have been collected
       public int CurrentAccumulatedGems { get; set; }
+      public int[] GemLevelsList = [1];
 
-      // public List<GameWeapon.Weapon> myWeaponList { get;  set; }
+      // the list is populated by the player/enemy themselves,
+      // this just creates the list.
+      // public int WeaponRange;
 
-      // int[] GemLevelsList = new int[1];
-      public int[] GemLevelsList;
+      public GameWeapon.Weapon[] WeaponList;
 
       // constructor
       public Entity(){
@@ -59,8 +56,9 @@ namespace GameEntity
         // aspawns at zero and then gets rotated.
         EntityDirection = 0;
 
+        // stores the current weapons
         MyWeaponStack = new Stack<GameWeapon.Weapon>();
-        //Console.WriteLine("ENT___Entity instanced");
+        WeaponList = [];
       }
 
       // get location
@@ -88,6 +86,15 @@ namespace GameEntity
           Console.WriteLine("set z: {0}", ZLoc);
           return ZLoc += amount;
       }
+
+      /*
+      public int SetSpawnLocation(int XLoc,int ZLoc){
+          // check to see if there is something there already
+          SetXLoc(XLoc);
+          SetZLoc(ZLoc);
+        } //3
+      */
+
 
       // Health
 
@@ -169,9 +176,21 @@ namespace GameEntity
           GemCount++;
        }
 
-       public void TriggerWeaponUpgrade(){
-         
+       public virtual int TriggerWeaponUpgrade(int[] myGemLevelsList,int myLevel){        
+        if ( GemCount == myGemLevelsList[myLevel]){
+                  GemCount = 0;
+                  myLevel = myLevel + 1;
+                  Console.WriteLine("Set Level = {0}", myLevel);
+                  return myLevel;
+                 }
+        return myLevel;
        }
+
+       /*
+       public void UpdateWeaponList(){
+           MyWeaponStack.Push(myWeapon);
+         }
+         */
 
     }
 }

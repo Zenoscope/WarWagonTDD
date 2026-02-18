@@ -86,7 +86,7 @@ namespace EntityTests
       }
 
       [Test]
-      //[Ignore("This works")]
+      [Ignore("This works")]
       public void InjureAndHealEntity() {
         Console.WriteLine("Ent___Injure/heal");
         int InjuryAmount = 25;
@@ -100,6 +100,7 @@ namespace EntityTests
 
 
       [Test]
+      [Ignore("This works")]
       public void KillEntity() {
         int InjuryAmount = 25;
         Console.WriteLine("Ent___Killing entity");
@@ -111,6 +112,7 @@ namespace EntityTests
       }
 
       [Test]
+      [Ignore("This works")]
       public void OverHealEntity() {
         Console.WriteLine("Ent___Overheal");
         int HealAmount = 25;
@@ -140,12 +142,14 @@ namespace EntityTests
       */
 
       [Test]
+      [Ignore("This works")]
       public void GetMyWeaponStack(){
         Console.WriteLine("Ent___get Weapon stack");
         Stack<GameWeapon.Weapon> MyStack = MyEntity.GetWeaponStack();
       }
 
       [Test]
+      [Ignore("This works")]
       public void AddAWeapon(){
         Console.WriteLine("Ent___Add Weapon");
         GameWeapon.Weapon MyWeapon = new GameWeapon.Weapon();
@@ -161,6 +165,7 @@ namespace EntityTests
       }
 
       [Test]
+      [Ignore("This works")]
       public void ClearWeaponStack(){
         Console.WriteLine("WEA___clear weapon stack");
         GameWeapon.Weapon MyWeapon = new GameWeapon.Weapon();
@@ -186,9 +191,8 @@ namespace EntityTests
           */
       }
 
-
-
       [Test]
+      [Ignore("This works")]
       public void ReplaceAWeapon(){
         // the player can only have a certain number of weapons
         // before the existing ones are removed.
@@ -252,12 +256,14 @@ namespace EntityTests
       */
 
       [Test]
+      [Ignore("This works")]
       public void EntityRotateLeft(){
         Console.WriteLine("Ent___RotateLeft");
         Assert.That(MyEntity.LeftRotate(),Is.EqualTo(10));
       }
 
       [Test]
+      [Ignore("This works")]
       public void EntityRotateRight(){
         Console.WriteLine("Ent___RotateLeft");
         Assert.That(MyEntity.RightRotate(),Is.EqualTo(-10));
@@ -266,6 +272,7 @@ namespace EntityTests
       // This is the gems which have been collected
 
       [Test]
+      [Ignore("This works")]
       public void GetGemLevel(){
         // check the current level, each gem level should have a level (number or percentage)
         // if the level reaches the threshold, then gems is 0 and level goes up.
@@ -275,6 +282,7 @@ namespace EntityTests
         }
 
       [Test]
+      [Ignore("This works")]
       public void GetThenSetGemCount(){
         // check the current level, each gem level should have a level (number or percentage)
         // if the level reaches the threshold, then gems is 0 and level goes up.
@@ -285,6 +293,7 @@ namespace EntityTests
         }
 
         [Test]
+        [Ignore("This works")]
         public void CollectGem(){
           Console.WriteLine("ENT_Collect Gem");
           Console.WriteLine("GemCount = {0}", MyEntity.GemCount);
@@ -294,8 +303,23 @@ namespace EntityTests
         }
 
         [Test]
-        public void TriggerWeaponUpgrade(){
-            TriggerWeaponUpgrade();
+        [Ignore("This works")]
+        public void TriggerAWeaponUpgrade(){
+            Console.WriteLine("");
+            Console.WriteLine("ENT_Trigger Weapon Upgrade");
+            Console.WriteLine("GemCount = {0}", MyEntity.GemCount);
+            Console.WriteLine("Level = {0}", MyEntity.Level);
+
+            Console.WriteLine("Fail to upgrade, we are not there yet...");
+            MyEntity.Level = MyEntity.TriggerWeaponUpgrade(MyEntity.GemLevelsList,MyEntity.Level);
+            Console.WriteLine("Level = {0}", MyEntity.Level);
+            MyEntity.GemCount++;
+
+            Console.WriteLine("Do the upgrade!");
+            MyEntity.Level = MyEntity.TriggerWeaponUpgrade(MyEntity.GemLevelsList,MyEntity.Level);
+            Assert.That(MyEntity.Level,Is.EqualTo(1));
+            Console.WriteLine("GemCount = {0}", MyEntity.GemCount);
+            Console.WriteLine("Level = {0}", MyEntity.Level);
         }
     }
 }

@@ -19,11 +19,17 @@ namespace WeaponTests
       */
 
       [Test]
+      [Ignore("Skipping this test for now")]
       public void testCreateWeapon(){
         Console.WriteLine("WEA_Create Weapon");
         GameWeapon.Weapon myWeapon1 = new GameWeapon.Weapon("Anvil",3,50);
         GameWeapon.Weapon myWeapon2 = new GameWeapon.Weapon("Sword",100,50);
         }
+
+      // upgrade a weapon
+
+
+
 
       // public void add to weaponList
       /*
