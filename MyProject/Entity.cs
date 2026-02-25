@@ -21,12 +21,12 @@ namespace GameEntity
 
       public string Name { get; set; }
 
-      public virtual byte MaxWeaponStackSize { get; set; }
+      public virtual byte MaxWeaponListSize { get; set; }
 
-      // public virtual enum GemLevelsList;
 
-      // public List<GameWeapon.Weapon> myWeaponList;
-      public Stack<GameWeapon.Weapon> MyWeaponStack;// = new Stack<GameWeapon.Weapon>();
+      public List<GameWeapon.Weapon> EquippedWeaponList;
+
+      // public Stack<GameWeapon.Weapon> MyWeaponStack;// = new Stack<GameWeapon.Weapon>();
 
       public string Mesh = "";
 
@@ -38,13 +38,11 @@ namespace GameEntity
       public uint CurrentAccumulatedGems { get; set; } = 0;
       public ushort[] GemLevelsList = [1];
 
-      // the list is populated by the player/enemy themselves,
+      // constructor      // the list is populated by the player/enemy themselves,
       // this just creates the list.
       // public int WeaponRange;
 
       // public GameWeapon.Weapon[] WeaponList;
-
-      // constructor
       public Entity(){
         XLoc = 0;
         ZLoc = 0;
@@ -54,8 +52,7 @@ namespace GameEntity
         MaxHealth = 0;
 
         // stores the current weapons
-        MyWeaponStack = new Stack<GameWeapon.Weapon>();
-        //WeaponList = [];
+        EquippedWeaponList = new List<GameWeapon.Weapon>();
       }
 
       // get location
@@ -91,7 +88,6 @@ namespace GameEntity
           SetZLoc(ZLoc);
         } //3
       */
-
 
       // Health
 
@@ -139,23 +135,19 @@ namespace GameEntity
 
       public virtual void KillEntity(){
           Console.WriteLine("die!!");
-          ClearWeaponStack();
+          ClearWeaponList();
           // delete the instance
           // this = null;
       }
 
-      public Stack<GameWeapon.Weapon> GetWeaponStack(){
-        return MyWeaponStack;
-        }
-
       //add weapon to the weapon stack
-      public virtual void AddToWeaponStack(GameWeapon.Weapon myWeapon){
-        MyWeaponStack.Push(myWeapon);
+      public virtual void AddToWeaponList(GameWeapon.Weapon myWeapon){
+        EquippedWeaponList.Add(myWeapon);
         }
 
-      public void ClearWeaponStack(){
+      public void ClearWeaponList(){
          // for some reason this doesn't work?
-         MyWeaponStack.Clear();
+         EquippedWeaponList.Clear();
          }
 
        public int LeftRotate(int RotateAmount = 10){

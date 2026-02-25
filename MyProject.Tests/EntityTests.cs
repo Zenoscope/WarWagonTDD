@@ -166,7 +166,7 @@ namespace EntityTests
 
       [Test]
       [Ignore("This works")]
-      public void ClearWeaponStack(){
+      public void ClearWeaponList(){
         Console.WriteLine("WEA___clear weapon stack");
         GameWeapon.Weapon MyWeapon = new GameWeapon.Weapon();
         MyWeapon.Name = "Weapon To Be Cleared";

@@ -36,7 +36,7 @@ namespace PlayerTests
      }
 
      [Test]
-     public void TestAddToWeaponStack() {
+     public void TestAddToWeaponList() {
         GameWeapon.Weapon MyWeapon;
         // MyEntity.MyWeapon = new GameWeapon.Weapon("Staff",10,50);
         MyWeapon = new GameWeapon.Weapon("Staff",10,50);
@@ -50,11 +50,33 @@ namespace PlayerTests
      [Test]
      public void getListOfAllWeapons(){
        // Console.WriteLine("Weapon 0 {0}", MyEntity.MyDefaultWeaponList[0].Name);
-      GameWeapon.Weapon test = MyEntity.MyDefaultWeaponList[0];
+      GameWeapon.Weapon test = MyEntity.DefaultWeaponList[0];
       // string MyWeaponName = MyEntity.MyDefaultWeaponList[0].Name;
        //Assert.That(MyWeapon.Name,Is.EqualTo("DeathRing"));
      }
 
+     [Test]
+     private TestReplaceWeaponOnList(){
+       MyWeapon = new GameWeapon.Weapon( "Replacement Weapon 1", 0, 0, 0, 0,
+               0, 0, 0 , GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.AoE );
+       MyEntity.DefaultWeaponList.Add(NewWeapon);
+       MyWeapon = new GameWeapon.Weapon( "Replacement Weapon 2", 0, 0, 0, 0,
+               0, 0, 0 , GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.AoE );
+       MyEntity.DefaultWeaponList.Add(NewWeapon);
+       MyWeapon = new GameWeapon.Weapon( "Replacement Weapon 3", 0, 0, 0, 0,
+               0, 0, 0 , GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.AoE );
+       MyEntity.DefaultWeaponList.Add(NewWeapon);
+       MyWeapon = new GameWeapon.Weapon( "Replacement Weapon 4", 0, 0, 0, 0,
+               0, 0, 0 , GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.AoE );
+       MyEntity.DefaultWeaponList.Add(NewWeapon);
+       MyWeapon = new GameWeapon.Weapon( "Replacement Weapon 5", 0, 0, 0, 0,
+               0, 0, 0 , GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.AoE );
+       MyEntity.DefaultWeaponList.Add(NewWeapon);
+
+       MyWeapon = new GameWeapon.Weapon( "Replacement Weapon 5", 0, 0, 0, 0,
+               0, 0, 0 , GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.AoE );
+       MyEntity.ReplaceWeaponOnList(MyWeapon);
+     }
 
      /*
 

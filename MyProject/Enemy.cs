@@ -94,7 +94,7 @@ namespace GameEnemy
 
       public override void KillEntity(){
           Console.WriteLine("die!!");
-          ClearWeaponStack();
+          ClearWeaponList();
           // delete the instance
           DropGem();
         } //3
@@ -107,7 +107,7 @@ namespace GameEnemy
 
       public void UpdateWeaponList(){
          Console.WriteLine("UpdatedWeaponList");
-         MyWeaponStack.Push(myWeapon);
+         EquippedWeaponList.Add(myWeapon);
         }
 
       private int SetSpawnLoc(int Min,int Max){

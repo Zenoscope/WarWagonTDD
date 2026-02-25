@@ -15,6 +15,8 @@ namespace GamePlayer
      GameWeapon.Weapon MyWeapon;
      //List<GameWeapon.Weapon> MyDefaultWeaponList;
 
+     public List<GameWeapon.Weapon> DefaultWeaponList;
+
       // constructor
       public Player(){
         Name = "Player";
@@ -22,12 +24,12 @@ namespace GamePlayer
         Level = 0;
         GemLevelsList = [ 10, 25, 50, 100, 250, 500 ];
 
-        List<GameWeapon.Weapon> MyDefaultWeaponList = new List<GameWeapon.Weapon>();
+        DefaultWeaponList = new List<GameWeapon.Weapon>();
 
         SetXLoc(0);
         SetZLoc(0);
 
-        MaxWeaponStackSize = 5;
+        MaxWeaponListSize = 5;
 
         // create a new weapon by default and add it to the player weapon stack
 
@@ -44,52 +46,66 @@ namespace GamePlayer
         EffectType { GroundHit, VertHit, HorizHit, AoE, Chain, Location }
         */
 
-        MyWeapon = new GameWeapon.Weapon(
-        "DeathRing", 10,
-        0, 0,
-        0, 0,
-        1, 0,
-        GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.HorizHit
-        );
+        MyWeapon = new GameWeapon.Weapon( "DeathRing", 10, 0, 0, 0,
+            0, 1, 0, GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.HorizHit );
 
-        AddToWeaponStack(MyWeapon);
-        MyDefaultWeaponList.Add(MyWeapon);
+        EquippedWeaponList.Add(MyWeapon);
+        DefaultWeaponList.Add(MyWeapon);
 
+        Console.WriteLine("Weapon 0 {0}", DefaultWeaponList[0].Name);
 
-        Console.WriteLine("Weapon 0 {0}", MyDefaultWeaponList[0].Name);
-
-        // MyDefaultWeaponList.Add( Name="DeathRing", Damage=10, StrikeNumber = 0, Range=0, Durability=0, Cooldown=0, DamageType = GameWeapon.DamageEnum.Cut, CurrentLevel = 1, MaxLevel = 0, EffectType = GameWeapon.EffectEnum.HorizHit );
-
-               /*
-               new (){ Name="Axe", Damage=10, StrikeNumber = 1, Range=0, Durability=0,
-                Cooldown=0, DamageType = GameWeapon.DamageEnum.Cut, CurrentLevel = 1, MaxLevel = 0, EffectType = GameWeapon.EffectEnum.HorizHit },
-               new (){ Name="Anvil", Damage=10, StrikeNumber=0, Range=0, Durability=0,
-                 Cooldown=0, DamageType = GameWeapon.DamageEnum.Strike, CurrentLevel = 1, MaxLevel = 0, EffectType = GameWeapon.EffectEnum.VertHit },
-               new (){ Name="AreaLightning", Damage=10, StrikeNumber=0, Range=0, Durability=0,
-                Cooldown=0, DamageType = GameWeapon.DamageEnum.Lightning, CurrentLevel = 1, MaxLevel = 0 , EffectType = GameWeapon.EffectEnum.AoE },
-               new (){ Name="ChainLightning", Damage=10, StrikeNumber=0, Range=0, Durability=0,
-                Cooldown=0, DamageType = GameWeapon.DamageEnum.Lightning, CurrentLevel = 1, MaxLevel = 0 , EffectType = GameWeapon.EffectEnum.Chain },
-               new (){ Name="AreaLighning", Damage=10, StrikeNumber = 3, Range=0, Durability=0,
-                Cooldown=0, DamageType = GameWeapon.DamageEnum.Cut, CurrentLevel = 1, MaxLevel = 0 , EffectType = GameWeapon.EffectEnum.AoE}
-                // etc etc
-                */
+        // generate a list of default weapons
+        MyWeapon = new GameWeapon.Weapon( "Flying Axe", 10, 1, 0, 0,
+                0, 1, 0,GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.HorizHit);
+        DefaultWeaponList.Add(MyWeapon);
+        MyWeapon = new GameWeapon.Weapon( "Anvil", 10, 0, 0, 0,
+                 0, 1, 0, GameWeapon.DamageEnum.Strike, GameWeapon.EffectEnum.VertHit );
+        DefaultWeaponList.Add(MyWeapon);
+        MyWeapon = new GameWeapon.Weapon( "AreaLightning", 10, 0, 0, 0,
+                0, 1, 0 , GameWeapon.DamageEnum.Lightning, GameWeapon.EffectEnum.AoE );
+        DefaultWeaponList.Add(MyWeapon);
+        MyWeapon = new GameWeapon.Weapon( "ChainLightning", 10, 0, 0, 0,
+                0, 1, 0 , GameWeapon.DamageEnum.Lightning, GameWeapon.EffectEnum.Chain );
+        DefaultWeaponList.Add(MyWeapon);
+        MyWeapon = new GameWeapon.Weapon( "AreaLighning", 10, 3, 0, 0,
+                0, 1, 0 , GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.AoE );
+        DefaultWeaponList.Add(MyWeapon);
 
       }
 
-
       //add weapon to the weapon stack
-      public override void AddToWeaponStack(GameWeapon.Weapon thisWeapon){
-          // if the list length is > 5 then remove it from the list.
-          if (MyWeaponStack.Count < MaxWeaponStackSize){
-                MyWeaponStack.Push(thisWeapon);
+      public void ReplaceWeaponOnList(GameWeapon.Weapon NewWeapon){
+          // if the list length is > x then remove it from the list.
+          if (DefaultWeaponList.Count < MaxWeaponListSize){
+            // GameWeapon.Weapon OldWeapon
+            // ask for the weapon to replace
+            // replace it.
+            // GameWeapon.Weapon replaceWeapon = GetWeaponToReplace();
+            // loop through the list and
+
+            uint count = 0;
+            foreach(GameWeapon.Weapon DefaultWeapon in DefaultWeaponList){
+                Console.WriteLine(DefaultWeaponList[count].Name);
+                count++;
+                }
+
+            // DefaultWeaponList.Remove("C#");
+
             }
-          else {
-            // delete the top item in the stack (first one added)
-            MyWeaponStack.Pop();
-            // add the one to add.
-            MyWeaponStack.Push(thisWeapon);
-          }
+          // just add the weapon.
+          DefaultWeaponList.Add(NewWeapon);
         }
+
+        /*
+        private GameWeapon.Weapon GetWeaponToReplace(){
+          // string to search for:
+          string WeaponName =
+          SearchForWeapon();
+
+          return
+        }*/
+
+      // replace weapon
 
   }
 }
