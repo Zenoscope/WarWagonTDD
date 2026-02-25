@@ -16,7 +16,7 @@ namespace PlayerTests
      [Test]
      [Ignore("Skipping this test for now")]
      public void GetPlayerGemLevels(){
-      Console.WriteLine("GemLevelsList = {0}" , MyEntity.GemLevelsList[0]);
+      Console.WriteLine("GemLevelsList = {0}", MyEntity.GemLevelsList[0]);
       // Assert.That(MyEntity.GemLevelsList.1,Is.EqualTo(10));
      }
 
@@ -45,12 +45,16 @@ namespace PlayerTests
         Assert.That(peekAt.Name,Is.EqualTo("Staff"));
      }
 
-     /*
+     //string MyWeaponName = MyEntity.MyDefaultWeaponList[0].Name;
+
      [Test]
      public void getListOfAllWeapons(){
-       MyEntity.something();
+       // Console.WriteLine("Weapon 0 {0}", MyEntity.MyDefaultWeaponList[0].Name);
+      GameWeapon.Weapon test = MyEntity.MyDefaultWeaponList[0];
+      // string MyWeaponName = MyEntity.MyDefaultWeaponList[0].Name;
+       //Assert.That(MyWeapon.Name,Is.EqualTo("DeathRing"));
      }
-     */
+
 
      /*
 

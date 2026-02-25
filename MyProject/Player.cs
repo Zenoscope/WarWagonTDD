@@ -11,8 +11,9 @@ namespace GamePlayer
   // inherits from entity
   public class Player : GameEntity.Entity {
 
-     public int Score { get;  set; } = 0;
+     public uint Score { get;  set; } = 0;
      GameWeapon.Weapon MyWeapon;
+     //List<GameWeapon.Weapon> MyDefaultWeaponList;
 
       // constructor
       public Player(){
@@ -21,36 +22,45 @@ namespace GamePlayer
         Level = 0;
         GemLevelsList = [ 10, 25, 50, 100, 250, 500 ];
 
+        List<GameWeapon.Weapon> MyDefaultWeaponList = new List<GameWeapon.Weapon>();
+
         SetXLoc(0);
         SetZLoc(0);
 
         MaxWeaponStackSize = 5;
 
-        // Stack<GameWeapon.Weapon> MyUpgradedWeaponStack = new Stack<GameWeapon.Weapon>();
+        // create a new weapon by default and add it to the player weapon stack
 
         /*
-
         Name { get; set;} // name of weapon
         Damage { get; set;} // damage delt
         StrikeNumber { get; set;} // individual items spawned
         Range { get; set;} // max range from player
         Durability { get; set;} // max hits per item
         Cooldown { get; set;} // cooldown before respawn in seconds
-        DamageType { Fire, Lightning, Water, Ice, Cut, Strike, Earth,  } // etc
         CurrentLevel { get; set;}
         MaxLevel { get; set;}
+        DamageType { Fire, Lightning, Water, Ice, Cut, Strike, Earth } // etc
         EffectType { GroundHit, VertHit, HorizHit, AoE, Chain, Location }
-
         */
 
-        // create a new weapon by default and add it to the player weapon stack
-        MyWeapon = new GameWeapon.Weapon("DeathRing",10,50);
-        AddToWeaponStack(MyWeapon);
+        MyWeapon = new GameWeapon.Weapon(
+        "DeathRing", 10,
+        0, 0,
+        0, 0,
+        1, 0,
+        GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.HorizHit
+        );
 
-        var MyDefaultWeaponList = new List<GameWeapon.Weapon>
-           {
-               new (){ Name="DeathRing", Damage=10, StrikeNumber = 0, Range=0, Durability=0,
-                Cooldown=0, DamageType = GameWeapon.DamageEnum.Cut, CurrentLevel = 1, MaxLevel = 0, EffectType = GameWeapon.EffectEnum.HorizHit },
+        AddToWeaponStack(MyWeapon);
+        MyDefaultWeaponList.Add(MyWeapon);
+
+
+        Console.WriteLine("Weapon 0 {0}", MyDefaultWeaponList[0].Name);
+
+        // MyDefaultWeaponList.Add( Name="DeathRing", Damage=10, StrikeNumber = 0, Range=0, Durability=0, Cooldown=0, DamageType = GameWeapon.DamageEnum.Cut, CurrentLevel = 1, MaxLevel = 0, EffectType = GameWeapon.EffectEnum.HorizHit );
+
+               /*
                new (){ Name="Axe", Damage=10, StrikeNumber = 1, Range=0, Durability=0,
                 Cooldown=0, DamageType = GameWeapon.DamageEnum.Cut, CurrentLevel = 1, MaxLevel = 0, EffectType = GameWeapon.EffectEnum.HorizHit },
                new (){ Name="Anvil", Damage=10, StrikeNumber=0, Range=0, Durability=0,
@@ -62,9 +72,10 @@ namespace GamePlayer
                new (){ Name="AreaLighning", Damage=10, StrikeNumber = 3, Range=0, Durability=0,
                 Cooldown=0, DamageType = GameWeapon.DamageEnum.Cut, CurrentLevel = 1, MaxLevel = 0 , EffectType = GameWeapon.EffectEnum.AoE}
                 // etc etc
-            };
+                */
 
       }
+
 
       //add weapon to the weapon stack
       public override void AddToWeaponStack(GameWeapon.Weapon thisWeapon){
@@ -80,47 +91,48 @@ namespace GamePlayer
           }
         }
 
-        /*
-        public virtual int TriggerWeaponUpgrade(int[] myGemLevelsList,int myLevel){
-         if ( GemCount == myGemLevelsList[myLevel]){
-                   GemCount = 0;
-                   myLevel = myLevel + 1;
-                   Console.WriteLine("Set Level = {0}", myLevel);
-                   return myLevel;
-                  }
-         return myLevel;
-        }
-        */
-
-        /*
-        //add weapon to the weapon stack
-        public void UpgradeWeapons(){
-            // get the list of weapons
-            // get a random 3 weapons
-            // check to see if the weapon is already in the player stack
-            // if so, upgrade it (how does this work?).
-            // range, hits, damage are separate?
-
-
-
-            if (MyWeaponStack.Count < MaxWeaponStackSize){
-                  MyWeaponStack.Push(MyWeapon);
-              }
-            else {
-              // delete the top item in the stack (first one added)
-              MyWeaponStack.Pop();
-              // add the one to add.
-              MyWeaponStack.Push(MyWeapon);
-            }
-          }
-          */
-
-      // movement keys
-      // player height
-      // head yRot,xRot,zRot, x,y,z
-      // leftHand x,y,z.xrot,yrot,zRot
-      // rightHand x,y,z.xrot,yrot,zRot
-      // Console.WriteLine("New player");
-
   }
 }
+
+
+/*
+public virtual int TriggerWeaponUpgrade(int[] myGemLevelsList,int myLevel){
+ if ( GemCount == myGemLevelsList[myLevel]){
+           GemCount = 0;
+           myLevel = myLevel + 1;
+           Console.WriteLine("Set Level = {0}", myLevel);
+           return myLevel;
+          }
+ return myLevel;
+}
+*/
+
+/*
+//add weapon to the weapon stack
+public void UpgradeWeapons(){
+    // get the list of weapons
+    // get a random 3 weapons
+    // check to see if the weapon is already in the player stack
+    // if so, upgrade it (how does this work?).
+    // range, hits, damage are separate?
+
+
+
+    if (MyWeaponStack.Count < MaxWeaponStackSize){
+          MyWeaponStack.Push(MyWeapon);
+      }
+    else {
+      // delete the top item in the stack (first one added)
+      MyWeaponStack.Pop();
+      // add the one to add.
+      MyWeaponStack.Push(MyWeapon);
+    }
+  }
+  */
+
+// movement keys
+// player height
+// head yRot,xRot,zRot, x,y,z
+// leftHand x,y,z.xrot,yrot,zRot
+// rightHand x,y,z.xrot,yrot,zRot
+// Console.WriteLine("New player");

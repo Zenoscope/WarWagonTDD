@@ -11,7 +11,7 @@ namespace EntityTests
 
       private GameEntity.Entity MyEntity;
 
-      int MoveAmount = 10;
+      float MoveAmount = 10;
 
       [SetUp]
       public void Setup()
@@ -65,7 +65,7 @@ namespace EntityTests
 
 
       // Health tests
-      int MaxHealth = 100;
+      ushort MaxHealth = 100;
 
       [Test]
       [Ignore("This works")]
@@ -89,8 +89,8 @@ namespace EntityTests
       [Ignore("This works")]
       public void InjureAndHealEntity() {
         Console.WriteLine("Ent___Injure/heal");
-        int InjuryAmount = 25;
-        int HealAmount = InjuryAmount;
+        ushort InjuryAmount = 25;
+        ushort HealAmount = InjuryAmount;
         Assert.That(MyEntity.SpawnSetHealth(MaxHealth),Is.EqualTo(MaxHealth));
         Assert.That(MyEntity.SubtractFromHealth(InjuryAmount),Is.EqualTo(75));
         Console.WriteLine(" Getting health");
@@ -102,7 +102,7 @@ namespace EntityTests
       [Test]
       [Ignore("This works")]
       public void KillEntity() {
-        int InjuryAmount = 25;
+        ushort InjuryAmount = 25;
         Console.WriteLine("Ent___Killing entity");
         Assert.That(MyEntity.SpawnSetHealth(MaxHealth),Is.EqualTo(MaxHealth));
         Assert.That(MyEntity.SubtractFromHealth(InjuryAmount),Is.EqualTo(75));
@@ -115,7 +115,7 @@ namespace EntityTests
       [Ignore("This works")]
       public void OverHealEntity() {
         Console.WriteLine("Ent___Overheal");
-        int HealAmount = 25;
+        ushort HealAmount = 25;
         Assert.That(MyEntity.SpawnSetHealth(MaxHealth),Is.EqualTo(MaxHealth));
         Assert.That(MyEntity.AddToHealth(HealAmount),Is.EqualTo(100));
       }

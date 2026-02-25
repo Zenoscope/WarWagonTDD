@@ -12,16 +12,16 @@ namespace GameEntity
      // these are properties, fields don’t have get/set
     // they can have default values set, but don’t get anything else.
 
-      public int XLoc { get; private set; } // no underscore as they are public
-      public int ZLoc { get; private set; }
+      public float XLoc { get; private set; } // no underscore as they are public
+      public float ZLoc { get; private set; }
 
       // fields
-      public int Health { get; set; }
+      public int Health { get; set; } // possibly byte, 255?
       public int MaxHealth { get; set; }
 
       public string Name { get; set; }
 
-      public virtual int MaxWeaponStackSize { get; set; }
+      public virtual byte MaxWeaponStackSize { get; set; }
 
       // public virtual enum GemLevelsList;
 
@@ -30,19 +30,19 @@ namespace GameEntity
 
       public string Mesh = "";
 
-      public int EntityDirection { get; set; }
+      public int EntityDirection { get; set; } = 0;
 
       // track the gem level and entites level
-      public int GemCount { get; set ; } = 0;
-      public int Level { get; set ; } = 0;
-      public int CurrentAccumulatedGems { get; set; }
-      public int[] GemLevelsList = [1];
+      public uint GemCount { get; set ; } = 0;
+      public uint Level { get; set ; } = 0;
+      public uint CurrentAccumulatedGems { get; set; } = 0;
+      public ushort[] GemLevelsList = [1];
 
       // the list is populated by the player/enemy themselves,
       // this just creates the list.
       // public int WeaponRange;
 
-      public GameWeapon.Weapon[] WeaponList;
+      // public GameWeapon.Weapon[] WeaponList;
 
       // constructor
       public Entity(){
@@ -53,27 +53,24 @@ namespace GameEntity
         Health = 0;
         MaxHealth = 0;
 
-        // aspawns at zero and then gets rotated.
-        EntityDirection = 0;
-
         // stores the current weapons
         MyWeaponStack = new Stack<GameWeapon.Weapon>();
-        WeaponList = [];
+        //WeaponList = [];
       }
 
       // get location
 
-      public int GetXLoc() {
+      public float GetXLoc() {
           Console.WriteLine("get x: {0}", XLoc);
           return XLoc;
       }
 
-      public int GetZLoc() {
+      public float GetZLoc() {
           Console.WriteLine("get z: {0}", ZLoc);
           return ZLoc;
       }
 
-      public int SetXLoc(int amount = 0) {
+      public float SetXLoc(float amount = 0) {
           // will also work with negative numbers, so moving that way...
           // what about rotation though? hmm.
           //x_loc = x_loc + amount;
@@ -81,7 +78,7 @@ namespace GameEntity
           return XLoc += amount;
       }
 
-      public int SetZLoc(int amount) {
+      public float SetZLoc(float amount) {
           //this.y_loc = this.y_loc + amount;
           Console.WriteLine("set z: {0}", ZLoc);
           return ZLoc += amount;
@@ -151,7 +148,7 @@ namespace GameEntity
         return MyWeaponStack;
         }
 
-      //add weapon to the weapon List
+      //add weapon to the weapon stack
       public virtual void AddToWeaponStack(GameWeapon.Weapon myWeapon){
         MyWeaponStack.Push(myWeapon);
         }
@@ -176,7 +173,7 @@ namespace GameEntity
           GemCount++;
        }
 
-       public virtual int TriggerWeaponUpgrade(int[] myGemLevelsList,int myLevel){        
+       public virtual uint TriggerWeaponUpgrade(ushort[] myGemLevelsList,uint myLevel){
         if ( GemCount == myGemLevelsList[myLevel]){
                   GemCount = 0;
                   myLevel = myLevel + 1;
@@ -186,11 +183,6 @@ namespace GameEntity
         return myLevel;
        }
 
-       /*
-       public void UpdateWeaponList(){
-           MyWeaponStack.Push(myWeapon);
-         }
-         */
 
     }
 }
