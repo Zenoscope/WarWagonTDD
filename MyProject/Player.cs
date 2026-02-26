@@ -88,9 +88,6 @@ namespace GamePlayer
                 Console.WriteLine(DefaultWeaponList[count].Name);
                 count++;
                 }
-
-            // DefaultWeaponList.Remove("C#");
-
             }
           // just add the weapon.
           DefaultWeaponList.Add(NewWeapon);

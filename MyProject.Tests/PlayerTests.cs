@@ -61,22 +61,28 @@ namespace PlayerTests
 
      [Test]
      public void TestReplaceWeaponOnList(){
+
        GameWeapon.Weapon MyWeapon;
+
        MyWeapon = new GameWeapon.Weapon( "Replacement Weapon 1", 0, 0, 0, 0,
                0, 0, 0 , GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.AoE );
-       MyEntity.DefaultWeaponList.Add(MyWeapon);
+       MyEntity.ReplaceWeaponOnList(MyWeapon);
+
        MyWeapon = new GameWeapon.Weapon( "Replacement Weapon 2", 0, 0, 0, 0,
                0, 0, 0 , GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.AoE );
-       MyEntity.DefaultWeaponList.Add(MyWeapon);
+       MyEntity.ReplaceWeaponOnList(MyWeapon);
+
        MyWeapon = new GameWeapon.Weapon( "Replacement Weapon 3", 0, 0, 0, 0,
                0, 0, 0 , GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.AoE );
-       MyEntity.DefaultWeaponList.Add(MyWeapon);
+       MyEntity.ReplaceWeaponOnList(MyWeapon);
+
        MyWeapon = new GameWeapon.Weapon( "Replacement Weapon 4", 0, 0, 0, 0,
                0, 0, 0 , GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.AoE );
-       MyEntity.DefaultWeaponList.Add(MyWeapon);
+       MyEntity.ReplaceWeaponOnList(MyWeapon);
+
        MyWeapon = new GameWeapon.Weapon( "Replacement Weapon 5", 0, 0, 0, 0,
                0, 0, 0 , GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.AoE );
-       MyEntity.DefaultWeaponList.Add(MyWeapon);
+       MyEntity.ReplaceWeaponOnList(MyWeapon);
 
        MyWeapon = new GameWeapon.Weapon( "Replacement Weapon 5", 0, 0, 0, 0,
                0, 0, 0 , GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.AoE );
