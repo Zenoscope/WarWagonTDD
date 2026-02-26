@@ -120,14 +120,13 @@ namespace EntityTests
         Assert.That(MyEntity.AddToHealth(HealAmount),Is.EqualTo(100));
       }
 
-      /*
-      *
-      *
       [Test]
       public void getMyWeaponList(){
-        List<GameWeapon.Weapon> myList = myEntity.GetWeaponList();
+        List<GameWeapon.Weapon> myList = MyEntity.GetWeaponList();
       }
 
+
+      /*
       [Test]
       public void addAWeapon(){
         GameWeapon.Weapon myWeapon = new GameWeapon.Weapon();
@@ -141,27 +140,25 @@ namespace EntityTests
       }
       */
 
+      /*
       [Test]
       [Ignore("This works")]
       public void GetMyWeaponStack(){
         Console.WriteLine("Ent___get Weapon stack");
         Stack<GameWeapon.Weapon> MyStack = MyEntity.GetWeaponStack();
       }
+      */
 
       [Test]
       [Ignore("This works")]
       public void AddAWeapon(){
         Console.WriteLine("Ent___Add Weapon");
         GameWeapon.Weapon MyWeapon = new GameWeapon.Weapon();
-        MyWeapon.Name = "HammerFist";
-        MyWeapon.StrikeNumber = 100;
-        MyWeapon.Damage = 100;
-
-        Stack<GameWeapon.Weapon> MyStack = MyEntity.GetWeaponStack();
-        MyEntity.AddToWeaponStack(MyWeapon);
-        // Console.WriteLine("New weapon: {0}", myEntity.myWeaponStack[0].Name);
-        GameWeapon.Weapon StackWeapon  = MyEntity.MyWeaponStack.Peek();
-        Console.WriteLine(" Added weapon: {0}", StackWeapon.Name);
+        MyWeapon = new GameWeapon.Weapon( "AreaLightning", 10, 3, 0, 0,
+                0, 1, 0 , GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.AoE );
+        MyEntity.AddToWeaponList(MyWeapon);
+        Console.WriteLine(" Added weapon: {0}", MyEntity.EquippedWeaponList[1].Name);
+        Assert.That(MyEntity.EquippedWeaponList[1].Name,Is.EqualTo("AreaLightning"));
       }
 
       [Test]
@@ -173,22 +170,9 @@ namespace EntityTests
         MyWeapon.StrikeNumber = 100;
         MyWeapon.Damage = 100;
 
-        MyEntity.AddToWeaponStack(MyWeapon);
-        GameWeapon.Weapon StackWeapon  = MyEntity.MyWeaponStack.Peek();
-        Console.WriteLine(" Added found: {0}", StackWeapon.Name);
-        MyEntity.ClearWeaponStack();
+        MyEntity.ClearWeaponList();
 
-        Assert.Throws<InvalidOperationException>(() =>  MyEntity.MyWeaponStack.Peek());
-
-        /*
-        try {
-          stackWeapon = myEntity.myWeaponStack.Peek();
-          Console.WriteLine(" Added found: {0}", stackWeapon.Name);
-            }
-        catch {
-          Console.WriteLine(" Stack is empty.");
-          }
-          */
+        // Assert.Throws<InvalidOperationException>(() =>  EquippedWeaponList;
       }
 
       [Test]
@@ -206,32 +190,32 @@ namespace EntityTests
         MyWeapon.StrikeNumber = 100;
         MyWeapon.Damage = 100;
         //MyEntity.AddToWeaponList(MyWeapon);
-        MyEntity.AddToWeaponStack(MyWeapon);
+        MyEntity.AddToWeaponList(MyWeapon);
 
         MyWeapon.Name = "Number2";
         MyWeapon.StrikeNumber = 100;
         MyWeapon.Damage = 100;
-        MyEntity.AddToWeaponStack(MyWeapon);
+        MyEntity.AddToWeaponList(MyWeapon);
 
         MyWeapon.Name = "Number3";
         MyWeapon.StrikeNumber = 100;
         MyWeapon.Damage = 100;
-        MyEntity.AddToWeaponStack(MyWeapon);
+        MyEntity.AddToWeaponList(MyWeapon);
 
         MyWeapon.Name = "Number4";
         MyWeapon.StrikeNumber = 100;
         MyWeapon.Damage = 100;
-        MyEntity.AddToWeaponStack(MyWeapon);
+        MyEntity.AddToWeaponList(MyWeapon);
 
         MyWeapon.Name = "Number5";
         MyWeapon.StrikeNumber = 100;
         MyWeapon.Damage = 100;
-        MyEntity.AddToWeaponStack(MyWeapon);
+        MyEntity.AddToWeaponList(MyWeapon);
 
         MyWeapon.Name = "Number6";
         MyWeapon.StrikeNumber = 100;
         MyWeapon.Damage = 100;
-        MyEntity.AddToWeaponStack(MyWeapon);
+        MyEntity.AddToWeaponList(MyWeapon);
 
         //List<GameWeapon.Weapon> MyList = MyEntity.GetWeaponStack();
         //Console.WriteLine("New weapon: {0}", MyEntity.MyWeaponStack[0].Name);

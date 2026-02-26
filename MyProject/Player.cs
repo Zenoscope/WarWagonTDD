@@ -67,7 +67,7 @@ namespace GamePlayer
         MyWeapon = new GameWeapon.Weapon( "ChainLightning", 10, 0, 0, 0,
                 0, 1, 0 , GameWeapon.DamageEnum.Lightning, GameWeapon.EffectEnum.Chain );
         DefaultWeaponList.Add(MyWeapon);
-        MyWeapon = new GameWeapon.Weapon( "AreaLighning", 10, 3, 0, 0,
+        MyWeapon = new GameWeapon.Weapon( "AreaLightning 2", 10, 3, 0, 0,
                 0, 1, 0 , GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.AoE );
         DefaultWeaponList.Add(MyWeapon);
 
@@ -83,7 +83,7 @@ namespace GamePlayer
             // GameWeapon.Weapon replaceWeapon = GetWeaponToReplace();
             // loop through the list and
 
-            uint count = 0;
+            int count = 0;
             foreach(GameWeapon.Weapon DefaultWeapon in DefaultWeaponList){
                 Console.WriteLine(DefaultWeaponList[count].Name);
                 count++;

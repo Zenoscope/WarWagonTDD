@@ -145,6 +145,10 @@ namespace GameEntity
         EquippedWeaponList.Add(myWeapon);
         }
 
+      public List<GameWeapon.Weapon> GetWeaponList(){
+        return EquippedWeaponList;
+        }
+
       public void ClearWeaponList(){
          // for some reason this doesn't work?
          EquippedWeaponList.Clear();

@@ -30,7 +30,7 @@ namespace PlayerTests
        Console.WriteLine(" Entity X location:{0}", MyEntity.XLoc);
        Console.WriteLine(" Entity Y location:{0}", MyEntity.ZLoc);
        Console.WriteLine(" Entity Y location:{0}", MyEntity.Score);
-       GameWeapon.Weapon peekAt = MyEntity.MyWeaponStack.Peek();
+       GameWeapon.Weapon peekAt = MyEntity.EquippedWeaponList[MyEntity.EquippedWeaponList.Count()];
        Console.WriteLine(" Default Weapon Name:{0}", peekAt.Name);
        Assert.That(peekAt.Name,Is.EqualTo("DeathRing"));
      }
@@ -38,14 +38,18 @@ namespace PlayerTests
      [Test]
      public void TestAddToWeaponList() {
         GameWeapon.Weapon MyWeapon;
-        // MyEntity.MyWeapon = new GameWeapon.Weapon("Staff",10,50);
-        MyWeapon = new GameWeapon.Weapon("Staff",10,50);
-        MyEntity.AddToWeaponStack(MyWeapon);
-        GameWeapon.Weapon peekAt = MyEntity.MyWeaponStack.Peek();
-        Assert.That(peekAt.Name,Is.EqualTo("Staff"));
-     }
 
-     //string MyWeaponName = MyEntity.MyDefaultWeaponList[0].Name;
+        MyWeapon = new GameWeapon.Weapon( "AreaLightning 2", 10, 3, 0, 0,
+                0, 1, 0 , GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.AoE );
+
+        MyEntity.AddToWeaponList(MyWeapon);
+
+        Console.WriteLine("EquippedWeaponList.Count = {0}" ,MyEntity.EquippedWeaponList.Count());
+        // GameWeapon.Weapon peek = MyEntity.EquippedWeaponList[1];
+        GameWeapon.Weapon peek = MyEntity.EquippedWeaponList[MyEntity.EquippedWeaponList.Count() - 1];
+
+        Assert.That(peek.Name,Is.EqualTo(MyWeapon.Name));
+     }
 
      [Test]
      public void getListOfAllWeapons(){
@@ -56,22 +60,23 @@ namespace PlayerTests
      }
 
      [Test]
-     private TestReplaceWeaponOnList(){
+     public void TestReplaceWeaponOnList(){
+       GameWeapon.Weapon MyWeapon;
        MyWeapon = new GameWeapon.Weapon( "Replacement Weapon 1", 0, 0, 0, 0,
                0, 0, 0 , GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.AoE );
-       MyEntity.DefaultWeaponList.Add(NewWeapon);
+       MyEntity.DefaultWeaponList.Add(MyWeapon);
        MyWeapon = new GameWeapon.Weapon( "Replacement Weapon 2", 0, 0, 0, 0,
                0, 0, 0 , GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.AoE );
-       MyEntity.DefaultWeaponList.Add(NewWeapon);
+       MyEntity.DefaultWeaponList.Add(MyWeapon);
        MyWeapon = new GameWeapon.Weapon( "Replacement Weapon 3", 0, 0, 0, 0,
                0, 0, 0 , GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.AoE );
-       MyEntity.DefaultWeaponList.Add(NewWeapon);
+       MyEntity.DefaultWeaponList.Add(MyWeapon);
        MyWeapon = new GameWeapon.Weapon( "Replacement Weapon 4", 0, 0, 0, 0,
                0, 0, 0 , GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.AoE );
-       MyEntity.DefaultWeaponList.Add(NewWeapon);
+       MyEntity.DefaultWeaponList.Add(MyWeapon);
        MyWeapon = new GameWeapon.Weapon( "Replacement Weapon 5", 0, 0, 0, 0,
                0, 0, 0 , GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.AoE );
-       MyEntity.DefaultWeaponList.Add(NewWeapon);
+       MyEntity.DefaultWeaponList.Add(MyWeapon);
 
        MyWeapon = new GameWeapon.Weapon( "Replacement Weapon 5", 0, 0, 0, 0,
                0, 0, 0 , GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.AoE );
