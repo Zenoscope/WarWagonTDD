@@ -136,8 +136,12 @@ namespace GameEntity
       public virtual void KillEntity(){
           Console.WriteLine("die!!");
           ClearWeaponList();
-          // delete the instance
-          // this = null;
+          // delete the instance (which one um....)
+          DeleteInstance();
+      }
+
+      public void DeleteInstance(){
+        Console.WriteLine("Deleting instance and mesh");
       }
 
       //add weapon to the weapon stack
@@ -164,10 +168,15 @@ namespace GameEntity
          return EntityDirection;
        }
 
-       public void CollectGem(){
+       public uint CollectGem(){
           // collision detection etc
           GemCount++;
+          // delete the gem mesh (also used by dieEntity)
+          DeleteInstance();
+          return GemCount;
        }
+
+       // upgrade weapons and stuff
 
        public virtual uint TriggerWeaponUpgrade(ushort[] myGemLevelsList,uint myLevel){
         if ( GemCount == myGemLevelsList[myLevel]){
@@ -178,6 +187,9 @@ namespace GameEntity
                  }
         return myLevel;
        }
+
+       
+
 
 
     }

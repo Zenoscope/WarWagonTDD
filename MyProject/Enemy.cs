@@ -43,6 +43,8 @@ namespace GameEnemy
             MaxHealth = 50;
             Mesh = "";
             myWeapon = new GameWeapon.Weapon("Long_Sword",5,50);
+            //Weapon DeathRing = new Weapon( "DeathRing", 10, 0, 0, 0,
+            //    0, 1, 0, GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.HorizHit );
             GemCount = 0;
             break;
           case "Mage":
@@ -51,6 +53,8 @@ namespace GameEnemy
             MaxHealth = 150;
             Mesh = "";
             myWeapon = new GameWeapon.Weapon("Staff",10,50);
+            //Weapon DeathRing = new Weapon( "DeathRing", 10, 0, 0, 0,
+            //    0, 1, 0, GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.HorizHit );
             GemCount = 0;
             break;
           case "Goblin":
@@ -59,6 +63,8 @@ namespace GameEnemy
             MaxHealth = 20;
             Mesh = "";
             myWeapon = new GameWeapon.Weapon("Short_sword",2,25);
+            //Weapon DeathRing = new Weapon( "DeathRing", 10, 0, 0, 0,
+            //    0, 1, 0, GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.HorizHit );
             GemCount = 0;
             break;
           case "Grubber":
@@ -66,7 +72,9 @@ namespace GameEnemy
             Health = 10;
             MaxHealth = 10;
             Mesh = "";
-            myWeapon = new GameWeapon.Weapon("Teeth",1,5);
+             myWeapon = new GameWeapon.Weapon("Teeth",1,5);
+            //Weapon DeathRing = new Weapon( "DeathRing", 10, 0, 0, 0,
+            //    0, 1, 0, GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.HorizHit );
             GemCount = 0;
             break;
           default:
@@ -74,7 +82,9 @@ namespace GameEnemy
             Health = 5;
             MaxHealth = 5;
             Mesh = "";
-            myWeapon = new GameWeapon.Weapon("Blank",0,0);
+             myWeapon = new GameWeapon.Weapon("Blank",0,0);
+            //Weapon DeathRing = new Weapon( "DeathRing", 10, 0, 0, 0,
+            //    0, 1, 0, GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.HorizHit );
             GemCount = 0;
             break;
           } // 4

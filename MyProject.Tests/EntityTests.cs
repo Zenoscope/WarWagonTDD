@@ -172,7 +172,6 @@ namespace EntityTests
 
         MyEntity.ClearWeaponList();
 
-        // Assert.Throws<InvalidOperationException>(() =>  EquippedWeaponList;
       }
 
       [Test]
@@ -189,7 +188,6 @@ namespace EntityTests
         MyWeapon.Name = "Number1";
         MyWeapon.StrikeNumber = 100;
         MyWeapon.Damage = 100;
-        //MyEntity.AddToWeaponList(MyWeapon);
         MyEntity.AddToWeaponList(MyWeapon);
 
         MyWeapon.Name = "Number2";
@@ -217,27 +215,15 @@ namespace EntityTests
         MyWeapon.Damage = 100;
         MyEntity.AddToWeaponList(MyWeapon);
 
-        //List<GameWeapon.Weapon> MyList = MyEntity.GetWeaponStack();
-        //Console.WriteLine("New weapon: {0}", MyEntity.MyWeaponStack[0].Name);
       }
 
-
-      /*
       [Test]
       // Collect a gem
-      public void CollectAGem(){
-         String entityType = "Enemy";
-         Assert.That(MyEntity.collectGem(),Is.EqualTo("Enemy"));
-
-         String entityType = "Player";
-         Assert.That(MyEntity.collectGem(),Is.EqualTo("Player"));
-
-         // if the gem is collected by an enemy..
-         // delete the gem mesh (also used by dieEntity)
-         // add the gem value to the armour/health of the enemy entity, to a max value (%?)
-         // add the gem to the GemCount
+      public void TestCollectAGem(){
+         uint localGemCount = MyEntity.GemCount;
+         uint collectedGems = MyEntity.CollectGem();
+         Assert.That(collectedGems,Is.EqualTo(localGemCount + 1));
       }
-      */
 
       [Test]
       [Ignore("This works")]

@@ -13,7 +13,6 @@ namespace GamePlayer
 
      public uint Score { get;  set; } = 0;
      GameWeapon.Weapon MyWeapon;
-     //List<GameWeapon.Weapon> MyDefaultWeaponList;
 
      public List<GameWeapon.Weapon> DefaultWeaponList;
 
@@ -73,36 +72,100 @@ namespace GamePlayer
 
       }
 
-      //add weapon to the weapon stack
-      public void ReplaceWeaponOnList(GameWeapon.Weapon NewWeapon){
-          // if the list length is > x then remove it from the list.
-          if (DefaultWeaponList.Count < MaxWeaponListSize){
-            // GameWeapon.Weapon OldWeapon
-            // ask for the weapon to replace
-            // replace it.
-            // GameWeapon.Weapon replaceWeapon = GetWeaponToReplace();
-            // loop through the list and
+      //add weapon to the equipped weapon list
+      public void AddWeapon(GameWeapon.Weapon NewWeapon){
 
-            int count = 0;
-            foreach(GameWeapon.Weapon DefaultWeapon in DefaultWeaponList){
-                Console.WriteLine(DefaultWeaponList[count].Name);
-                count++;
+          // if the count is too large, select one to remove:
+          if (EquippedWeaponList.Count() > MaxWeaponListSize){
+              int count = 0;
+
+              foreach(GameWeapon.Weapon EquippedWeapon in EquippedWeaponList){
+                  // list the weapons
+                  ListWeapon(EquippedWeaponList[count],count);
+                  count++;
                 }
-            }
+
+              // choose a weapon to replace
+              GameWeapon.Weapon WeaponToReplace = ChooseWeaponToReplace();
+              GameWeapon.Weapon ReplacedWeapon = ReplaceThisWeapon(NewWeapon, WeaponToReplace);
+
+              }
+
           // just add the weapon.
-          DefaultWeaponList.Add(NewWeapon);
+          EquippedWeaponList.Add(NewWeapon);
+          Console.WriteLine("Adding weapon - {0}", EquippedWeaponList[EquippedWeaponList.Count() - 1].Name);
         }
 
-        /*
-        private GameWeapon.Weapon GetWeaponToReplace(){
-          // string to search for:
-          string WeaponName =
-          SearchForWeapon();
+        // display a single weapon.
+        public GameWeapon.Weapon ListWeapon(GameWeapon.Weapon showThisWeapon, int weaponIndex){
+            Console.WriteLine("[{0}] Weapons list: {1}", weaponIndex, showThisWeapon.Name);
+            return showThisWeapon;
+        }
 
-          return
-        }*/
+        public GameWeapon.Weapon ChooseWeaponToReplace(){
+          // generate a random number between 0 and 5
+          // lowest bound is nclusive, highest is not (wtf?)
+          // return that weapon
+          Random rnd = new Random();
+          int MaxList = EquippedWeaponList.Count();
+          return EquippedWeaponList[rnd.Next(0,MaxList + 1)];
+        }
 
-      // replace weapon
+        public GameWeapon.Weapon ReplaceThisWeapon(GameWeapon.Weapon orig, GameWeapon.Weapon swap){
+            // look for the original weapon and then replace it.
+
+            int index = EquippedWeaponList.IndexOf(orig);
+            if(index != -1)
+              EquippedWeaponList[index] = swap;
+
+            return EquippedWeaponList[index];
+        }
+
+
+        private void upgradeWeapon(GameWeapon.Weapon NewWeapon){
+          // ************
+          // upgrade/new weapon:
+          // select 3 random weapons from the weaponlist.
+          // GetThreeWeaponsFromUpgradeList();
+
+          // if its equipped, upgrade a random attribute:
+          // checkWeaponIsOnList() => yes or no for a method for this?
+                  // could it be needed anywhere else?
+          // UpgradeAttribute();
+              // select a random attribute to upgrade
+
+          // display the list of weapon/ups
+
+          // choose an weapon/up automatically
+          //   if upgrade the existing
+              // upgrade attribute
+              // mark weapon as upgraded.
+          //   else show the list
+            // choose one at random
+            // replace it
+        }
+
+        public /*GameWeapon.Weapon[]*/ void GetThreeWeaponsFromUpgradeList(){
+          GameWeapon.Weapon myWeapon = new GameWeapon.Weapon();
+          // myWeapon.DeathRing;
+          // GameWeapon.Weapon NewWeapon = myWeapon.DeathRing;
+          Console.WriteLine("{0}", myWeapon.Name);
+          // GameWeapon.Weapon[] UpgradeWeaponList = [ GameWeapon.DeathRing ];
+
+          // return UpgradeWeaponList;
+        }
+
+        public void SelectAttribute(){
+          // select a random attribute
+          // list of attributes that can be upgraded:
+          // range, durability, instances, etc
+          // return attribute;
+        }
+
+        public void UpgradeAttribute (){
+            // upgrade said attribute
+            // add a number to the attribute.
+          }
 
   }
 }
@@ -128,8 +191,6 @@ public void UpgradeWeapons(){
     // check to see if the weapon is already in the player stack
     // if so, upgrade it (how does this work?).
     // range, hits, damage are separate?
-
-
 
     if (MyWeaponStack.Count < MaxWeaponStackSize){
           MyWeaponStack.Push(MyWeapon);

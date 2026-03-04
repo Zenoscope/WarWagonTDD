@@ -53,72 +53,101 @@ namespace PlayerTests
 
      [Test]
      public void getListOfAllWeapons(){
-       // Console.WriteLine("Weapon 0 {0}", MyEntity.MyDefaultWeaponList[0].Name);
       GameWeapon.Weapon test = MyEntity.DefaultWeaponList[0];
-      // string MyWeaponName = MyEntity.MyDefaultWeaponList[0].Name;
-       //Assert.That(MyWeapon.Name,Is.EqualTo("DeathRing"));
      }
 
-     [Test]
-     public void TestReplaceWeaponOnList(){
 
-       GameWeapon.Weapon MyWeapon;
+      [Test]
+      public void TestListWeapon() {
+        GameWeapon.Weapon MyWeapon = MyEntity.ListWeapon(MyEntity.EquippedWeaponList[0],0);
+        // should return a Weapon
+        Assert.That(MyWeapon, Is.TypeOf(typeof(GameWeapon.Weapon)));
+        }
 
-       MyWeapon = new GameWeapon.Weapon( "Replacement Weapon 1", 0, 0, 0, 0,
-               0, 0, 0 , GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.AoE );
-       MyEntity.ReplaceWeaponOnList(MyWeapon);
+      [Test]
+      public void TestChooseWeaponToReplace() {
 
-       MyWeapon = new GameWeapon.Weapon( "Replacement Weapon 2", 0, 0, 0, 0,
-               0, 0, 0 , GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.AoE );
-       MyEntity.ReplaceWeaponOnList(MyWeapon);
+        GameWeapon.Weapon MyWeapon = new GameWeapon.Weapon( "AreaLightning", 10, 3, 0, 0,
+                0, 1, 0 , GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.AoE );
+        MyEntity.AddToWeaponList(MyWeapon);
 
-       MyWeapon = new GameWeapon.Weapon( "Replacement Weapon 3", 0, 0, 0, 0,
-               0, 0, 0 , GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.AoE );
-       MyEntity.ReplaceWeaponOnList(MyWeapon);
+        MyWeapon = new GameWeapon.Weapon( "AreaLightning 2", 10, 3, 0, 0,
+                0, 1, 0 , GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.AoE );
+        MyEntity.AddToWeaponList(MyWeapon);
 
-       MyWeapon = new GameWeapon.Weapon( "Replacement Weapon 4", 0, 0, 0, 0,
-               0, 0, 0 , GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.AoE );
-       MyEntity.ReplaceWeaponOnList(MyWeapon);
-
-       MyWeapon = new GameWeapon.Weapon( "Replacement Weapon 5", 0, 0, 0, 0,
-               0, 0, 0 , GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.AoE );
-       MyEntity.ReplaceWeaponOnList(MyWeapon);
-
-       MyWeapon = new GameWeapon.Weapon( "Replacement Weapon 5", 0, 0, 0, 0,
-               0, 0, 0 , GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.AoE );
-       MyEntity.ReplaceWeaponOnList(MyWeapon);
-     }
-
-     /*
-
-       //Upgrade weapon
-       public void UpgradeWeapons(){
-           // Player has created a list of all weapons
-           // Player also as a weapon stack.
-
-           // get the list of all weapons
+        Console.WriteLine("!@ EquippedWeaponList length: {0}", MyEntity.EquippedWeaponList.Count());
+        MyWeapon = MyEntity.ChooseWeaponToReplace();
+        // should return a Weapon
+        Console.WriteLine("!@ Replacing weapon: {0}", MyWeapon.Name);
+        Assert.That(MyWeapon, Is.TypeOf(typeof(GameWeapon.Weapon)));
+        }
 
 
-           // get a random 3 weapons
-           // check to see if the weapon is already in the player stack
-           // if so, upgrade it (how does this work?).
-           // range, hits, damage are separate?
+      [Test]
+      public void TestReplaceThisWeapon(){
 
-           MyEntity.MyWeaponStack.Count
+        Console.WriteLine("!! ReplaceThisWeapon");
 
-             }
-           else {
-             // delete the top item in the stack (first one added)
-             MyWeaponStack.Pop();
-             // add the one to add.
-             MyWeaponStack.Push(MyWeapon);
-           }
-         }
-         */
+        GameWeapon.Weapon originalWeapon = new GameWeapon.Weapon( "Mob of Tiny Horses", 10, 3, 0, 0,
+                0, 1, 0 , GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.AoE );
+        MyEntity.AddToWeaponList(originalWeapon);
 
+        GameWeapon.Weapon swappedWeapon = new GameWeapon.Weapon( "Giant Killer Duck", 10, 3, 0, 0,
+                0, 1, 0 , GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.AoE );
+
+        Console.WriteLine("EquippedWeaponList length: {0}", MyEntity.EquippedWeaponList.Count());
+
+        int index = MyEntity.EquippedWeaponList.IndexOf(originalWeapon);
+        Console.WriteLine("Original Weapon {0} ", originalWeapon.Name);
+        GameWeapon.Weapon replacedWeapon = MyEntity.ReplaceThisWeapon(originalWeapon, swappedWeapon);
+        Console.WriteLine("Replaced with = {0} " , replacedWeapon.Name);
+        Assert.That(replacedWeapon.Name,Is.EqualTo(swappedWeapon.Name));
+      }
+
+      [Test]
+      public void TestAddWeapon(){
+
+        GameWeapon.Weapon Weapon1;
+        Weapon1 = new GameWeapon.Weapon( "Single Axe Handle", 10, 3, 0, 0,
+                0, 1, 0 , GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.AoE );
+        MyEntity.AddWeapon(Weapon1);
+        Assert.That(Weapon1, Is.TypeOf(typeof(GameWeapon.Weapon)));
+
+        Weapon1 = new GameWeapon.Weapon( "Double Axe Handle", 10, 3, 0, 0,
+                0, 1, 0 , GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.AoE );
+        MyEntity.AddWeapon(Weapon1);
+
+        Weapon1 = new GameWeapon.Weapon( "Double Double Axe Handle", 10, 3, 0, 0,
+                0, 1, 0 , GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.AoE );
+        MyEntity.AddWeapon(Weapon1);
+
+        Weapon1 = new GameWeapon.Weapon( "Double Double Toil and Trouble", 10, 3, 0, 0,
+                0, 1, 0 , GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.AoE );
+        MyEntity.AddWeapon(Weapon1);
+
+        Weapon1 = new GameWeapon.Weapon( "Doubler and Doubler Toil and Trouble", 10, 3, 0, 0,
+                0, 1, 0 , GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.AoE );
+        MyEntity.AddWeapon(Weapon1);
+
+        Weapon1 = new GameWeapon.Weapon( "Even more Doubler and Doubler Toil and Trouble", 10, 3, 0, 0,
+                0, 1, 0 , GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.AoE );
+        MyEntity.AddWeapon(Weapon1);
+
+        int EquippedWeaponListCount =  MyEntity.EquippedWeaponList.Count();
+        Assert.That(MyEntity.EquippedWeaponList.Count(),Is.EqualTo(MyEntity.MaxWeaponListSize));
+        Assert.That(Weapon1.Name,Is.EqualTo(MyEntity.EquippedWeaponList[EquippedWeaponListCount].Name));
+
+      }
+
+      /*
+      [Test]
+      public void TestGetThreeWeaponsFromUpgradeList(){
+        GameWeapon.Weapon[] UpgradeWeaponList;
+        MyEntity.GetThreeWeaponsFromUpgradeList();
+        // UpgradeWeaponList = MyEntity.GetThreeWeaponsFromUpgradeList();
+        //Assert.That(UpgradeWeaponList[0],Is.TypeOf(GameWeapon.Weapon));
+      }
+      */
 
    }
-
-
-
- }
+}
