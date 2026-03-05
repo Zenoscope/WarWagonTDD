@@ -87,14 +87,25 @@ namespace GamePlayer
 
               // choose a weapon to replace
               GameWeapon.Weapon WeaponToReplace = ChooseWeaponToReplace();
-              GameWeapon.Weapon ReplacedWeapon = ReplaceThisWeapon(NewWeapon, WeaponToReplace);
-
+              ReplaceThisWeapon(NewWeapon, WeaponToReplace);
               }
 
           // just add the weapon.
           EquippedWeaponList.Add(NewWeapon);
           Console.WriteLine("Adding weapon - {0}", EquippedWeaponList[EquippedWeaponList.Count() - 1].Name);
         }
+
+
+        public GameWeapon.Weapon ReplaceThisWeapon(GameWeapon.Weapon NewWeapon, GameWeapon.Weapon WeaponToReplace){
+          int index = EquippedWeaponList.IndexOf(WeaponToReplace);
+
+          if (index > -1)
+            EquippedWeaponList[index] = WeaponToReplace;
+            return WeaponToReplace;
+          else Console.WriteLine("Error");
+
+        }
+
 
         // display a single weapon.
         public GameWeapon.Weapon ListWeapon(GameWeapon.Weapon showThisWeapon, int weaponIndex){
@@ -111,49 +122,31 @@ namespace GamePlayer
           return EquippedWeaponList[rnd.Next(0,MaxList + 1)];
         }
 
-        public GameWeapon.Weapon ReplaceThisWeapon(GameWeapon.Weapon orig, GameWeapon.Weapon swap){
+        public GameWeapon.Weapon ls(GameWeapon.Weapon orig, GameWeapon.Weapon swap){
             // look for the original weapon and then replace it.
-
             int index = EquippedWeaponList.IndexOf(orig);
+
             if(index != -1)
               EquippedWeaponList[index] = swap;
 
             return EquippedWeaponList[index];
         }
 
-
+        /*
         private void upgradeWeapon(GameWeapon.Weapon NewWeapon){
-          // ************
-          // upgrade/new weapon:
-          // select 3 random weapons from the weaponlist.
-          // GetThreeWeaponsFromUpgradeList();
 
-          // if its equipped, upgrade a random attribute:
-          // checkWeaponIsOnList() => yes or no for a method for this?
-                  // could it be needed anywhere else?
-          // UpgradeAttribute();
-              // select a random attribute to upgrade
+        }*/
 
-          // display the list of weapon/ups
-
-          // choose an weapon/up automatically
-          //   if upgrade the existing
-              // upgrade attribute
-              // mark weapon as upgraded.
-          //   else show the list
-            // choose one at random
-            // replace it
-        }
-
-        public /*GameWeapon.Weapon[]*/ void GetThreeWeaponsFromUpgradeList(){
-          GameWeapon.Weapon myWeapon = new GameWeapon.Weapon();
+        /*
+        public GameWeapon.Weapon GetThreeWeaponsFromUpgradeList(){
+          //GameWeapon.Weapon myWeapon = new GameWeapon.Weapon();
           // myWeapon.DeathRing;
           // GameWeapon.Weapon NewWeapon = myWeapon.DeathRing;
-          Console.WriteLine("{0}", myWeapon.Name);
+          ///Console.WriteLine("{0}", myWeapon.Name);
           // GameWeapon.Weapon[] UpgradeWeaponList = [ GameWeapon.DeathRing ];
 
           // return UpgradeWeaponList;
-        }
+        }*/
 
         public void SelectAttribute(){
           // select a random attribute

@@ -141,12 +141,26 @@ namespace PlayerTests
 
       /*
       [Test]
-      public void TestGetThreeWeaponsFromUpgradeList(){
+      public void TestUpgradeWewapons(){
         GameWeapon.Weapon[] UpgradeWeaponList;
         MyEntity.GetThreeWeaponsFromUpgradeList();
         // UpgradeWeaponList = MyEntity.GetThreeWeaponsFromUpgradeList();
         //Assert.That(UpgradeWeaponList[0],Is.TypeOf(GameWeapon.Weapon));
+      }*/
+
+      [Test]
+      public void TestGetThreeWeaponsToUpgrade(){
+
       }
+
+      /*
+      [Test]
+      public void TestUpgradeRandomAttribute(){}
+      */
+
+      /*
+      [Test]
+      public void TestIsdUpgradable(){}
       */
 
    }
