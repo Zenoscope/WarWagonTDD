@@ -101,9 +101,10 @@ namespace GamePlayer
 
           if (index > -1)
             EquippedWeaponList[index] = WeaponToReplace;
-            return WeaponToReplace;
-          else Console.WriteLine("Error");
+          else
+            Console.WriteLine("Error");
 
+          return WeaponToReplace;
         }
 
 
