@@ -56,19 +56,19 @@ namespace GamePlayer
         // generate a list of default weapons
         MyWeapon = new GameWeapon.Weapon( "Flying Axe", 10, 1, 0, 0,
                 0, 1, 0,GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.HorizHit);
-        DefaultWeaponList.Add(MyWeapon);
+        AddWeapon(MyWeapon);
         MyWeapon = new GameWeapon.Weapon( "Anvil", 10, 0, 0, 0,
                  0, 1, 0, GameWeapon.DamageEnum.Strike, GameWeapon.EffectEnum.VertHit );
-        DefaultWeaponList.Add(MyWeapon);
+        AddWeapon(MyWeapon);
         MyWeapon = new GameWeapon.Weapon( "AreaLightning", 10, 0, 0, 0,
                 0, 1, 0 , GameWeapon.DamageEnum.Lightning, GameWeapon.EffectEnum.AoE );
-        DefaultWeaponList.Add(MyWeapon);
+        AddWeapon(MyWeapon);
         MyWeapon = new GameWeapon.Weapon( "ChainLightning", 10, 0, 0, 0,
                 0, 1, 0 , GameWeapon.DamageEnum.Lightning, GameWeapon.EffectEnum.Chain );
-        DefaultWeaponList.Add(MyWeapon);
+        AddWeapon(MyWeapon);
         MyWeapon = new GameWeapon.Weapon( "AreaLightning 2", 10, 3, 0, 0,
                 0, 1, 0 , GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.AoE );
-        DefaultWeaponList.Add(MyWeapon);
+        AddWeapon(MyWeapon);
 
       }
 
@@ -78,7 +78,9 @@ namespace GamePlayer
           // if the count is too large, select one to remove:
           if (EquippedWeaponList.Count() > MaxWeaponListSize){
               int count = 0;
+              Console.WriteLine("EquippedWeaponList greater than allowed");
 
+              // this can be skipped if not testing
               foreach(GameWeapon.Weapon EquippedWeapon in EquippedWeaponList){
                   // list the weapons
                   ListWeapon(EquippedWeaponList[count],count);
@@ -87,12 +89,15 @@ namespace GamePlayer
 
               // choose a weapon to replace
               GameWeapon.Weapon WeaponToReplace = ChooseWeaponToReplace();
+              Console.WriteLine("replacing weapon {0}" , WeaponToReplace);
               ReplaceThisWeapon(NewWeapon, WeaponToReplace);
+
               }
 
           // just add the weapon.
           EquippedWeaponList.Add(NewWeapon);
           Console.WriteLine("Adding weapon - {0}", EquippedWeaponList[EquippedWeaponList.Count() - 1].Name);
+          Console.WriteLine("EquippedWeaponList count {0}", EquippedWeaponList.Count());
         }
 
 
@@ -118,9 +123,11 @@ namespace GamePlayer
           // generate a random number between 0 and 5
           // lowest bound is nclusive, highest is not (wtf?)
           // return that weapon
-          Random rnd = new Random();
-          int MaxList = EquippedWeaponList.Count();
-          return EquippedWeaponList[rnd.Next(0,MaxList + 1)];
+          if ( EquippedWeaponList.Count() > MaxWeaponListSize) {
+            Random rnd = new Random();
+            int MaxList = EquippedWeaponList.Count();
+            return EquippedWeaponList[rnd.Next(0,MaxList + 1)];
+          }          
         }
 
         public GameWeapon.Weapon ls(GameWeapon.Weapon orig, GameWeapon.Weapon swap){
