@@ -140,38 +140,47 @@ namespace PlayerTests
         MyEntity.AddWeapon(Weapon);
         Console.WriteLine("EquippedWeaponList test Count:" , MyEntity.EquippedWeaponList.Count());
 
-        int EquippedWeaponListCount =  MyEntity.EquippedWeaponList.Count();
+        int EquippedWeaponListCount =  MyEntity.EquippedWeaponList.Count() - 1;
         // Assert.That(MyEntity.EquippedWeaponList.Count(),Is.EqualTo(MyEntity.MaxWeaponListSize));
         Assert.That(Weapon.Name,Is.EqualTo(MyEntity.EquippedWeaponList[EquippedWeaponListCount].Name));
 
         Console.WriteLine("EquippedWeaponList test Count:" , MyEntity.EquippedWeaponList.Count());
 
-
       }
 
       /*
-      [Test]
-      public void TestUpgradeWewapons(){
-        GameWeapon.Weapon[] UpgradeWeaponList;
-        MyEntity.GetThreeWeaponsFromUpgradeList();
-        // UpgradeWeaponList = MyEntity.GetThreeWeaponsFromUpgradeList();
-        //Assert.That(UpgradeWeaponList[0],Is.TypeOf(GameWeapon.Weapon));
+      private void upgradeWeapon(GameWeapon.Weapon NewWeapon){
+      }*/
+
+      /*
+      public GameWeapon.Weapon GetThreeWeaponsFromUpgradeList(){
+        //GameWeapon.Weapon myWeapon = new GameWeapon.Weapon();
+        // myWeapon.DeathRing;
+        // GameWeapon.Weapon NewWeapon = myWeapon.DeathRing;
+        ///Console.WriteLine("{0}", myWeapon.Name);
+        // GameWeapon.Weapon[] UpgradeWeaponList = [ GameWeapon.DeathRing ];
+
+        // return UpgradeWeaponList;
       }*/
 
       [Test]
-      public void TestGetThreeWeaponsToUpgrade(){
+      public void TestSelectAttribute(){
+        Weapon = new GameWeapon.Weapon( "Doubler and Doubler Toil and Trouble", 10, 3, 0, 0,
+                0, 1, 0 , GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.AoE );
 
+        // select a random attribute
+        randomAttribute = MyEntity.SelectAttribute(Weapon);
+        // check to see if an attribute has been updated.
+          // check to see if the attribute has been maxed out, if it has, choose another
+        // list of attributes that can be upgraded:
+        // range, durability, instances, etc
+        // return attribute;
       }
 
-      /*
-      [Test]
-      public void TestUpgradeRandomAttribute(){}
-      */
-
-      /*
-      [Test]
-      public void TestIsdUpgradable(){}
-      */
+      public void UpgradeAttribute (){
+          // upgrade said attribute
+          // add a number to the attribute.
+        }
 
    }
 }

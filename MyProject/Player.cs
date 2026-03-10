@@ -91,7 +91,6 @@ namespace GamePlayer
               GameWeapon.Weapon WeaponToReplace = ChooseWeaponToReplace();
               Console.WriteLine("replacing weapon {0}" , WeaponToReplace);
               ReplaceThisWeapon(NewWeapon, WeaponToReplace);
-
               }
 
           // just add the weapon.
@@ -112,7 +111,6 @@ namespace GamePlayer
           return WeaponToReplace;
         }
 
-
         // display a single weapon.
         public GameWeapon.Weapon ListWeapon(GameWeapon.Weapon showThisWeapon, int weaponIndex){
             Console.WriteLine("[{0}] Weapons list: {1}", weaponIndex, showThisWeapon.Name);
@@ -121,24 +119,17 @@ namespace GamePlayer
 
         public GameWeapon.Weapon ChooseWeaponToReplace(){
           // generate a random number between 0 and 5
-          // lowest bound is nclusive, highest is not (wtf?)
+          // lowest bound is inclusive, highest is not (wtf?)
           // return that weapon
           if ( EquippedWeaponList.Count() > MaxWeaponListSize) {
             Random rnd = new Random();
             int MaxList = EquippedWeaponList.Count();
             return EquippedWeaponList[rnd.Next(0,MaxList + 1)];
-          }          
+          }
+          else return EquippedWeaponList[0];
         }
 
-        public GameWeapon.Weapon ls(GameWeapon.Weapon orig, GameWeapon.Weapon swap){
-            // look for the original weapon and then replace it.
-            int index = EquippedWeaponList.IndexOf(orig);
 
-            if(index != -1)
-              EquippedWeaponList[index] = swap;
-
-            return EquippedWeaponList[index];
-        }
 
         /*
         private void upgradeWeapon(GameWeapon.Weapon NewWeapon){
