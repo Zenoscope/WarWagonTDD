@@ -15,6 +15,7 @@ namespace GamePlayer
      GameWeapon.Weapon MyWeapon;
 
      public List<GameWeapon.Weapon> DefaultWeaponList;
+     public List<GameWeapon.Weapon> UpgradeWeaponList;
 
       // constructor
       public Player(){
@@ -24,6 +25,7 @@ namespace GamePlayer
         GemLevelsList = [ 10, 25, 50, 100, 250, 500 ];
 
         DefaultWeaponList = new List<GameWeapon.Weapon>();
+        UpgradeWeaponList = new List<GameWeapon.Weapon>();
 
         SetXLoc(0);
         SetZLoc(0);
@@ -129,14 +131,18 @@ namespace GamePlayer
           else return EquippedWeaponList[0];
         }
 
-
-
         /*
         private void upgradeWeapon(GameWeapon.Weapon NewWeapon){
+        // get three random weapons
+        getThreeWeaponsFromListUpgradeList()
 
+        // upgrade all of the weapons.
+          // figure out which attributres its possible to upgrade and choose one
+        // display all of the possible options and choose one.
+        // upgrade the weapon
+        // put it in the players inventory
         }*/
 
-        /*
         public GameWeapon.Weapon GetThreeWeaponsFromUpgradeList(){
           //GameWeapon.Weapon myWeapon = new GameWeapon.Weapon();
           // myWeapon.DeathRing;
@@ -144,15 +150,26 @@ namespace GamePlayer
           ///Console.WriteLine("{0}", myWeapon.Name);
           // GameWeapon.Weapon[] UpgradeWeaponList = [ GameWeapon.DeathRing ];
 
-          // return UpgradeWeaponList;
-        }*/
-
-        public void SelectAttribute(){
-          // select a random attribute
-          // list of attributes that can be upgraded:
-          // range, durability, instances, etc
-          // return attribute;
+          return UpgradeWeaponList;
         }
+
+        /*
+        public string SelectAttribute(GameWeapon.Weapon Weapon){
+          // select a random attribute
+
+          // Adding elements to Dictionary
+          OrderedDictionary<string, bool> IsUpgradable = new Dictionary<string, bool>();
+
+          IsUpgradable.Add("Damage ", false);
+          IsUpgradable.Add("StrikeNumber ", false);
+          IsUpgradable.Add("Range ", false);
+          IsUpgradable.Add("Durability ", false);
+          IsUpgradable.Add("Cooldown ", false);
+
+          // randomly choose from the dictionary
+
+          return attribute.Name;
+        }*/
 
         public void UpgradeAttribute (){
             // upgrade said attribute

@@ -150,37 +150,47 @@ namespace PlayerTests
 
       /*
       private void upgradeWeapon(GameWeapon.Weapon NewWeapon){
+        // get three random weapons
+        getThreeWeaponsFromListUpgradeList()
+
+        // upgrade all of the weapons.
+          // figure out which attributres its possible to upgrade and choose one
+        // display all of the possible options and choose one.
+        // upgrade the weapon
+        // put it in the players inventory
       }*/
+
+      [Test]
+      public void TestGetThreeWeaponsFromUpgradeList(){
+        MyEntity.UpgradeWeaponList =  MyEntity.GetThreeWeaponsFromUpgradeList();
+        foreach(GameWeapon.Weapon item in MyEntity.UpgradeWeaponList){
+            Assert.That(item, Is.TypeOf(typeof(GameWeapon.Weapon)));
+        }
+
+      }
 
       /*
-      public GameWeapon.Weapon GetThreeWeaponsFromUpgradeList(){
-        //GameWeapon.Weapon myWeapon = new GameWeapon.Weapon();
-        // myWeapon.DeathRing;
-        // GameWeapon.Weapon NewWeapon = myWeapon.DeathRing;
-        ///Console.WriteLine("{0}", myWeapon.Name);
-        // GameWeapon.Weapon[] UpgradeWeaponList = [ GameWeapon.DeathRing ];
-
-        // return UpgradeWeaponList;
-      }*/
-
       [Test]
       public void TestSelectAttribute(){
         Weapon = new GameWeapon.Weapon( "Doubler and Doubler Toil and Trouble", 10, 3, 0, 0,
                 0, 1, 0 , GameWeapon.DamageEnum.Cut, GameWeapon.EffectEnum.AoE );
 
         // select a random attribute
-        randomAttribute = MyEntity.SelectAttribute(Weapon);
+        int randomAttribute = MyEntity.SelectAttribute(Weapon);
         // check to see if an attribute has been updated.
           // check to see if the attribute has been maxed out, if it has, choose another
         // list of attributes that can be upgraded:
         // range, durability, instances, etc
         // return attribute;
       }
+      */
 
+      /*
       public void UpgradeAttribute (){
           // upgrade said attribute
           // add a number to the attribute.
         }
+      */
 
    }
 }
