@@ -144,6 +144,9 @@ namespace GamePlayer
         }*/
 
         public GameWeapon.Weapon GetThreeWeaponsFromUpgradeList(){
+          Random rnd = new Random();
+          // inclusive or exclusive?
+          rnd.Next(0,2)];
           //GameWeapon.Weapon myWeapon = new GameWeapon.Weapon();
           // myWeapon.DeathRing;
           // GameWeapon.Weapon NewWeapon = myWeapon.DeathRing;
