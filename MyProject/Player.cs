@@ -14,8 +14,11 @@ namespace GamePlayer
      public uint Score { get;  set; } = 0;
      GameWeapon.Weapon MyWeapon;
 
-     public List<GameWeapon.Weapon> DefaultWeaponList;
-     public List<GameWeapon.Weapon> UpgradeWeaponList;
+     public List<GameWeapon.Weapon> DefaultWeaponList; // list of weapons a player can get
+     public List<GameWeapon.Weapon> UpgradeWeaponList; // tewmporaty list of weapons which a player can upgrade
+
+     int MaxUpgradeListSize = 3;
+     private int[] numbers = [];
 
       // constructor
       public Player(){
@@ -143,17 +146,34 @@ namespace GamePlayer
         // put it in the players inventory
         }*/
 
-        public GameWeapon.Weapon GetThreeWeaponsFromUpgradeList(){
-          Random rnd = new Random();
-          // inclusive or exclusive?
-          rnd.Next(0,2)];
-          //GameWeapon.Weapon myWeapon = new GameWeapon.Weapon();
-          // myWeapon.DeathRing;
-          // GameWeapon.Weapon NewWeapon = myWeapon.DeathRing;
-          ///Console.WriteLine("{0}", myWeapon.Name);
-          // GameWeapon.Weapon[] UpgradeWeaponList = [ GameWeapon.DeathRing ];
+        // public GameWeapon.Weapon GetThreeWeaponsFromUpgradeList(){
+        public void GetThreeWeaponsFromUpgradeList(){
 
-          return UpgradeWeaponList;
+          //public List<GameWeapon.Weapon> UpgradeWeaponList;
+
+          Random rnd = new Random();
+
+          while(UpgradeWeaponList.Count() < MaxUpgradeListSize){
+          //while(UpgradeWeaponList.Count() < 3){
+            rnd.Next(0, DefaultWeaponList.Count() ); // 0 - x
+            
+
+            for(int i = 0; i < numbers.Count(); i++ ) {
+              // if the random number matches
+              if ( rnd = numbers[i]) {
+                 Console.WriteLine("number {0}", number);
+                 break;
+                 }
+              else UpgradeWeaponList.add(DefaultWeaponList[rnd]);
+              }
+
+          }
+
+          for(int i = 0; i < UpgradeWeaponList.Count(); i ++ ) {
+            Console.WriteLine("UpgradeWeaponList {0}",UpgradeWeaponList[i].Name);
+          }
+
+          // return UpgradeWeaponList;
         }
 
         /*
