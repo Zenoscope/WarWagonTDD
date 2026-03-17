@@ -17,8 +17,9 @@ namespace GamePlayer
      public List<GameWeapon.Weapon> DefaultWeaponList; // list of weapons a player can get
      public List<GameWeapon.Weapon> UpgradeWeaponList; // tewmporaty list of weapons which a player can upgrade
 
-     int MaxUpgradeListSize = 3;
      private int[] numbers = [];
+
+     public int MaxUpgradeListSize;
 
       // constructor
       public Player(){
@@ -33,7 +34,8 @@ namespace GamePlayer
         SetXLoc(0);
         SetZLoc(0);
 
-        MaxWeaponListSize = 5;
+        MaxWeaponListSize = 5; // max number of weapons a player can have
+        MaxUpgradeListSize = 3; // number of weapons which can be upgraded at once.
 
         // create a new weapon by default and add it to the player weapon stack
 
@@ -146,6 +148,7 @@ namespace GamePlayer
         // put it in the players inventory
         }*/
 
+        /*
         // public GameWeapon.Weapon GetThreeWeaponsFromUpgradeList(){
         public void GetThreeWeaponsFromUpgradeList(){
 
@@ -175,39 +178,43 @@ namespace GamePlayer
 
           // return UpgradeWeaponList;
         }
+        */
 
         // Online C# Editor for free // Write, Edit and Run your C# code using C# Online Compiler
 
-        static void GetThreeWeaponsFromUpgradeList(List<string> DefaultWeaponList){//2
-            List<string> UpgradeWeaponList = new List<string>();
+        //public List<GameWeapon.Weapon> GetThreeWeaponsFromUpgradeList(List<GameWeapon.Weapon> DefaultWeaponList, int MaxUpgradeListSize){//2
+        public void GetThreeWeaponsFromUpgradeList(List<GameWeapon.Weapon> DefaultWeaponList, int MaxUpgradeListSize){//2
+
+            List<GameWeapon.Weapon> UpgradeWeaponList = new List<GameWeapon.Weapon>();
             List<int> RandomNumbersList = new List<int>();
 
-            int MaxUpgradeListSize = 5;
             Random rnd = new Random();
 
             //generate some random numbers and check for duplicates
-            while(RandomNumbersList.Count < MaxUpgradeListSize){ //3
+            while(RandomNumbersList.Count < 5){ //3
+            // while(RandomNumbersList.Count < MaxUpgradeListSize){ //3
                 int randomNumber = rnd.Next(0,DefaultWeaponList.Count - 1);
                 if (!RandomNumbersList.Contains(randomNumber)) {
                     RandomNumbersList.Add(randomNumber);
                     }
                 }//end while
 
-       Console.WriteLine("RandomNumbersList count {0}", RandomNumbersList.Count);
+          /*
+            Console.WriteLine("RandomNumbersList count {0}", RandomNumbersList.Count);
 
-       for(int i = 0; i < RandomNumbersList.Count; i++ ) {
-         Console.WriteLine("RandomNumbersList {0}", RandomNumbersList[i]);
-         UpgradeWeaponList.Add(DefaultWeaponList[RandomNumbersList[i]]);
-        }
+           for(int i = 0; i < RandomNumbersList.Count; i++ ) {
+             Console.WriteLine("RandomNumbersList {0}", RandomNumbersList[i]);
+             UpgradeWeaponList.Add(DefaultWeaponList[RandomNumbersList[i]]);
+            }
 
-       // just for debugging
-       for(int i = 0; i < UpgradeWeaponList.Count; i++ ) {
-        Console.WriteLine("UpgradeWeaponList {0}", UpgradeWeaponList[i]);
-        }
-      }//2
-    }//1
+           // just for debugging
+           for(int i = 0; i < UpgradeWeaponList.Count; i++ ) {
+            Console.WriteLine("UpgradeWeaponList {0}", UpgradeWeaponList[i]);
+            }
+            */
 
-
+            // return UpgradeWeaponList;
+        }//2
 
         /*
         public string SelectAttribute(GameWeapon.Weapon Weapon){

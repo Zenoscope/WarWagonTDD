@@ -160,15 +160,17 @@ namespace PlayerTests
         // put it in the players inventory
       }*/
 
+      /*
       [Test]
       public void TestGetThreeWeaponsFromUpgradeList(){
-        // MyEntity.UpgradeWeaponList =
-        MyEntity.GetThreeWeaponsFromUpgradeList();
-        //foreach(GameWeapon.Weapon item in MyEntity.UpgradeWeaponList){
-        //    Assert.That(item, Is.TypeOf(typeof(GameWeapon.Weapon)));
-        //}
+
+        Console.WriteLine("--------GetThreeWeaponsFromUpgradeList");
+        List<GameWeapon.Weapon> thisWeaponList = new List<GameWeapon.Weapon>();
+        // thisWeaponList = MyEntity.GetThreeWeaponsFromUpgradeList(MyEntity.DefaultWeaponList, MyEntity.MaxUpgradeListSize);
+        MyEntity.GetThreeWeaponsFromUpgradeList(MyEntity.DefaultWeaponList, MyEntity.MaxUpgradeListSize);
 
       }
+      */
 
       /*
       [Test]

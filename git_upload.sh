@@ -5,10 +5,10 @@ echo $1
 #if '$1';then
 # message='$1'
 #else
-message=$(date +"%A %B %d %Y")
+message=$(date +"%A %B %d %Y - %R")
 #fi
 
-#echo $message
+echo $message
 
 git add .
 git commit -m "$message"
