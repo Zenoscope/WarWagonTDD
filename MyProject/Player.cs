@@ -156,7 +156,7 @@ namespace GamePlayer
           while(UpgradeWeaponList.Count() < MaxUpgradeListSize){
           //while(UpgradeWeaponList.Count() < 3){
             rnd.Next(0, DefaultWeaponList.Count() ); // 0 - x
-            
+
 
             for(int i = 0; i < numbers.Count(); i++ ) {
               // if the random number matches
@@ -175,6 +175,39 @@ namespace GamePlayer
 
           // return UpgradeWeaponList;
         }
+
+        // Online C# Editor for free // Write, Edit and Run your C# code using C# Online Compiler
+
+        static void GetThreeWeaponsFromUpgradeList(List<string> DefaultWeaponList){//2
+            List<string> UpgradeWeaponList = new List<string>();
+            List<int> RandomNumbersList = new List<int>();
+
+            int MaxUpgradeListSize = 5;
+            Random rnd = new Random();
+
+            //generate some random numbers and check for duplicates
+            while(RandomNumbersList.Count < MaxUpgradeListSize){ //3
+                int randomNumber = rnd.Next(0,DefaultWeaponList.Count - 1);
+                if (!RandomNumbersList.Contains(randomNumber)) {
+                    RandomNumbersList.Add(randomNumber);
+                    }
+                }//end while
+
+       Console.WriteLine("RandomNumbersList count {0}", RandomNumbersList.Count);
+
+       for(int i = 0; i < RandomNumbersList.Count; i++ ) {
+         Console.WriteLine("RandomNumbersList {0}", RandomNumbersList[i]);
+         UpgradeWeaponList.Add(DefaultWeaponList[RandomNumbersList[i]]);
+        }
+
+       // just for debugging
+       for(int i = 0; i < UpgradeWeaponList.Count; i++ ) {
+        Console.WriteLine("UpgradeWeaponList {0}", UpgradeWeaponList[i]);
+        }
+      }//2
+    }//1
+
+
 
         /*
         public string SelectAttribute(GameWeapon.Weapon Weapon){
