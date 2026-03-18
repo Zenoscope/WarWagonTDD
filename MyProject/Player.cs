@@ -216,23 +216,23 @@ namespace GamePlayer
             // return UpgradeWeaponList;
         }//2
 
-        /*
-        public string SelectAttribute(GameWeapon.Weapon Weapon){
-          // select a random attribute
+        string SelectAttribute(GameWeapon.Weapon thisWeapon){
+              // select a random attribute
+              // Adding elements to Dictionary
+              List<string> IsUpgradable = new List<string>();
 
-          // Adding elements to Dictionary
-          OrderedDictionary<string, bool> IsUpgradable = new Dictionary<string, bool>();
+              if (thisWeapon.Damage < thisWeapon.DamageMax)         IsUpgradable.Add("Damage");
+              if (thisWeapon.StrikeNumber < thisWeapon.StrikeNumberMax) IsUpgradable.Add("StrikeNumber ");
+              if (thisWeapon.Range < thisWeapon.RangeMax)           IsUpgradable.Add("Range");
+              if (MyWeapon.Durability < thisWeapon.DurabilityMax) IsUpgradable.Add("Durability");
+              if (thisWeapon.Cooldown < thisWeapon.CooldownMax)     IsUpgradable.Add("Cooldown");
+                  // randomly choose from the dictionary
+              Random rnd = new Random();
+              int randomNumber = rnd.Next(0,IsUpgradable.Count);
+              string attribute = IsUpgradable[randomNumber];
 
-          IsUpgradable.Add("Damage ", false);
-          IsUpgradable.Add("StrikeNumber ", false);
-          IsUpgradable.Add("Range ", false);
-          IsUpgradable.Add("Durability ", false);
-          IsUpgradable.Add("Cooldown ", false);
-
-          // randomly choose from the dictionary
-
-          return attribute.Name;
-        }*/
+              return attribute;
+              }
 
         public void UpgradeAttribute (){
             // upgrade said attribute
