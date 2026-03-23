@@ -136,6 +136,9 @@ namespace GamePlayer
           else return EquippedWeaponList[0];
         }
 
+        //
+        //
+        //
         /*
         private void upgradeWeapon(GameWeapon.Weapon NewWeapon){
         // get three random weapons
@@ -147,38 +150,6 @@ namespace GamePlayer
         // upgrade the weapon
         // put it in the players inventory
         }*/
-
-        /*
-        // public GameWeapon.Weapon GetThreeWeaponsFromUpgradeList(){
-        public void GetThreeWeaponsFromUpgradeList(){
-
-          //public List<GameWeapon.Weapon> UpgradeWeaponList;
-
-          Random rnd = new Random();
-
-          while(UpgradeWeaponList.Count() < MaxUpgradeListSize){
-          //while(UpgradeWeaponList.Count() < 3){
-            rnd.Next(0, DefaultWeaponList.Count() ); // 0 - x
-
-
-            for(int i = 0; i < numbers.Count(); i++ ) {
-              // if the random number matches
-              if ( rnd = numbers[i]) {
-                 Console.WriteLine("number {0}", number);
-                 break;
-                 }
-              else UpgradeWeaponList.add(DefaultWeaponList[rnd]);
-              }
-
-          }
-
-          for(int i = 0; i < UpgradeWeaponList.Count(); i ++ ) {
-            Console.WriteLine("UpgradeWeaponList {0}",UpgradeWeaponList[i].Name);
-          }
-
-          // return UpgradeWeaponList;
-        }
-        */
 
         // Online C# Editor for free // Write, Edit and Run your C# code using C# Online Compiler
 
@@ -217,16 +188,17 @@ namespace GamePlayer
         }//2
 
         string SelectAttribute(GameWeapon.Weapon thisWeapon){
-              // select a random attribute
-              // Adding elements to Dictionary
-              List<string> IsUpgradable = new List<string>();
+                  // select a random attribute
+                  // Adding elements to Dictionary
 
+              List<string> IsUpgradable = new List<string>();
               if (thisWeapon.Damage < thisWeapon.DamageMax)         IsUpgradable.Add("Damage");
-              if (thisWeapon.StrikeNumber < thisWeapon.StrikeNumberMax) IsUpgradable.Add("StrikeNumber ");
+              if (thisWeapon.StrikeNumber < thisWeapon.StrikeNumberMax) IsUpgradable.Add("StrikeNumber");
               if (thisWeapon.Range < thisWeapon.RangeMax)           IsUpgradable.Add("Range");
               if (MyWeapon.Durability < thisWeapon.DurabilityMax) IsUpgradable.Add("Durability");
               if (thisWeapon.Cooldown < thisWeapon.CooldownMax)     IsUpgradable.Add("Cooldown");
-                  // randomly choose from the dictionary
+
+              // randomly choose from the dictionary
               Random rnd = new Random();
               int randomNumber = rnd.Next(0,IsUpgradable.Count);
               string attribute = IsUpgradable[randomNumber];
@@ -234,10 +206,58 @@ namespace GamePlayer
               return attribute;
               }
 
-        public void UpgradeAttribute (){
-            // upgrade said attribute
-            // add a number to the attribute.
-          }
+              // use the weapon set<attirbute> from the GameWeapon class
+
+      void upgradeAttribute(GameWeapon.Weapon thisWeapon, String attribute){
+
+        Console.WriteLine("Found attribute {0}", attribute);
+        // just some game breaking numbers
+        uint damageIncrement = 5; // maybe x the level?
+        uint strikeNumberIncrement = 1;
+        uint rangeIncrement = 10;
+        uint durabilityIncremement = 1;
+        float cooldownDecrement = 0.25f; // in seconds
+
+        float currValue = 0;
+        float newValue = 0;
+
+        switch (attribute){
+         case "Damage":
+            currValue = thisWeapon.Damage;
+            thisWeapon.Damage = (uint)currValue + damageIncrement;
+            newValue = thisWeapon.Damage;
+            break;
+        case "StrikeNumber":
+            currValue = thisWeapon.StrikeNumber;
+            thisWeapon.StrikeNumber = (uint)currValue + strikeNumberIncrement;
+            newValue = thisWeapon.StrikeNumber;
+            break;
+        case "Range":
+            currValue = thisWeapon.Range;
+            thisWeapon.Range = (uint)currValue + rangeIncrement;
+            newValue = thisWeapon.Range;
+            break;
+        case "Durability":
+            currValue = thisWeapon.Durability;
+            thisWeapon.Durability = (uint)currValue + durabilityIncremement;
+            newValue = thisWeapon.Durability;
+            break;
+        case "Cooldown":
+            // float currValue = thisWeapon.Cooldown;
+            currValue = thisWeapon.Cooldown;
+            thisWeapon.Cooldown = (uint)currValue - cooldownDecrement;
+            newValue = thisWeapon.Cooldown;
+            break;
+        default:
+            Console.WriteLine("Weapon missing attribute {0}", attribute);
+            break;
+        }
+
+        Console.WriteLine("Upgrading attribute {0}", attribute);
+        Console.WriteLine("Upgrading attribute from {0} to {1}",
+            currValue.ToString(), newValue.ToString() );
+
+      }
 
   }
 }
@@ -255,7 +275,6 @@ public virtual int TriggerWeaponUpgrade(int[] myGemLevelsList,int myLevel){
 }
 */
 
-/*
 //add weapon to the weapon stack
 public void UpgradeWeapons(){
     // get the list of weapons
